@@ -1,0 +1,141 @@
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setuppagenumbering[location={footer,center}]
+
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\ \right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\ \right. }]
+\definemathmatrix[pmatrix][matrix:parentheses][simplecommand=pmatrix]
+\definemathmatrix[bmatrix][matrix:bars][simplecommand=bmatrix]
+\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Контрольная работа №1 }
+\centerline { Вариант №14 }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { 10 ноября 2021 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\centerline {Задание №1}
+\startformula \startalign[align=left]
+\NC A = (1, 1),\ B = (-15, 11),\ C = (-8, 13) \NR
+\stopalign \stopformula
+1) Длина $BC$:
+\startformula \startalign[align=left]
+\NC |\vec{BC}| = |\vec{C} - \vec{B}| = |(7, 2)| = \sqrt{49 + 2} = \sqrt{51} \NR
+\stopalign \stopformula
+2) Линия $BC$: 
+\startformula \startalign[align=left]
+\NC \lmat{x=-15+7t; y=11+2t} \Rightarrow \frac{x + 15}7 = \frac{y - 11}2 \NR
+\stopalign \stopformula
+3) Высота из $A$:
+\startformula \startalign[align=left]
+\NC \vec{n}_{BC} = (-2, 7) \NR
+\NC AH:\ \frac{x - 1}{-2} = \frac{y - 1}{7} \NR
+\stopalign \stopformula
+4) Длина высоты из $A$:
+\startformula \startalign[align=left]
+\NC H = \lmat{\frac{x - 1}{-2} = \frac{y - 1}{7}; \frac{x + 15}7 = \frac{y - 11}2}
+    = \lmat{x = 1 - \frac{204}{53}; y = 1 + \frac{714}{53}} \NR
+\NC |\vec{AH}| = \left|\left(1 -\frac{204}{53} - 1, 1 + \frac{714}{53} - 1\right)\right|
+    = \left|\left(3\frac{45}{53}, 13\frac{25}{53}\right)\right| = \sqrt{551412} = 102\sqrt{53} \NR
+\stopalign \stopformula
+5) Точка пересечения медиан:
+\startformula \startalign[align=left]
+\NC \vec{M} = \frac{\vec{A} + \vec{B} + \vec{C}}3 = \frac{(1 -15 -8, 1 + 11 + 13)}3 = \frac{(-22, 25)}3 = (-7\frac13, 8\frac13) \NR
+\stopalign \stopformula
+6) Внутренний угол при $B$:
+\startformula \startalign[align=left]
+\NC \cos{φ} = \frac{\vec{BA} \cdot \vec{BC}}{|\vec{BA}||\vec{BC}|} \NR
+%\NC A = (1, 1),\ B = (-15, 11),\ C = (-8, 13) \NR
+\NC \vec{BA} = \vec{A} - \vec{B} = (1 + 15, 1 - 11) = (16, -10) \NR
+\NC \vec{BC} = \vec{C} - \vec{B} = (-8 + 15, 13 - 11) = (7, 2) \NR
+\NC \cos{φ} = \frac{16 \cdot 7 - 10 \cdot 2 }{\sqrt{(256 + 100)(49 + 4)}} = \frac{92}{2\sqrt{4717}}
+    = \frac{46}{\sqrt{4717}}\NR
+\NC φ = \acos{\left(\frac{46}{\sqrt{4717}}\right)} \NR
+\stopalign \stopformula
+7) Координаты точки М, расположенной симметрично точке А относительно прямой BC:
+\startformula \startalign[align=left]
+\NC \vec{H} = \frac{\vec{M} + \vec{A}}2 \Rightarrow \vec{M} = 2\vec{H} - \vec{A}
+    = (2 - \frac{408}{53} - 1, 2 + \frac{1428}{53} - 1) = (-6\frac{37}{53}, 27\frac{50}{53})\NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №2}
+\startformula \startalign[align=left]
+\NC M_1(1, 5, -7),\ M_2(-3, 6, 3),\ M_3(-2, 7, 3),\ M_0(1, -1, 2) \NR
+\NC \vec{r}_1 = \vec{M}_2 - \vec{M_1} = (-4, 1, 10),\ \ \vec{r}_2 = \vec{M}_3 - \vec{M}_1 = (-3, 2, 10) \NR
+\NC \vec{n} = \vec{r}_1 \times \vec{r}_2 = (10 - 20, 40 - 30, -8 + 1) = (-10, 10, -7) \NR
+\NC -10(x - 1) + 10(y - 5) -7(z + 7) = 0 \NR
+\NC d_{M_0} = \frac{-10(1 - 1) - 10(-1 - 5) - 7(2 + 7)}{\sqrt{249}}
+    = -\frac{123}{\sqrt{249}} \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №3}
+\startformula \startalign[align=left]
+\NC 2x + 2y + z + 9 = 0,\ x - y + 3z - 1 = 0 \NR
+\NC \cos(φ) = \frac{2 - 2 + 3}{|(2, 2, 1)||(1, -1, 3)|} = \frac{3}{3 \sqrt{11}} = \frac1{\sqrt{11}} \NR
+\NC φ = \acos{\frac1{\sqrt{11}}} \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №4}
+\startformula \startalign[align=left]
+\NC \lmat{x + y + z - 2 = 0; x - y - 2z + 2 = 0} \NR
+\NC n = (1, 1, 1) \times (1, -1, -2) = (-2 + 1, 1 + 2, -1 - 1) = (-1, 3, -2) \NR
+\NC M_0 = (0,0,2) \NR
+\NC \frac{x}{-1} = \frac{y}{3} = \frac{z - 2}{-2} \NR
+\stopalign \stopformula
+\page
+
+
+\centerline {Задание №5}
+\startformula \startalign[align=left]
+\NC \lmat{\frac{x + 3}1 = \frac{y - 2}{-5} = \frac{z + 2}3; 5x - y + 4z + 3 = 0} \NR
+\NC \lmat{x = -2; y = -3; z = 1} \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №6}
+\startformula \startalign[align=left]
+\NC M(-1, 0, 1),\quad \frac{x + 0.5}0 = \frac{y - 1}{0} = \frac{z - 4}2 \NR
+\stopalign \stopformula
+Плоскость параллельная оси $O_z$ и пересекает её в точке $A(-0.5, 1, 0)$.
+\startformula \startalign[align=left]
+\NC \vec{N}_{xy} = 2\vec{A}_{xy} - \vec{M}_{xy} = (-0.5 \cdot 2 - 1, 1 \cdot 2 - 0) = (0, 2) \NR
+\NC N = (0, 2, 1) \NR
+\stopalign \stopformula
+Ответ: $(0, 2, 1)$
+\vfil
+
+
+\centerline {Задание №7}
+\startformula \startalign[align=left]
+\NC \vec{a}=(2,3,2),\ \vec{b}=(4,7,5),\ \vec{c}=(2,0,1) \NR
+\stopalign \stopformula
+Три вектора в пространстве компланарны, если их смешанное произведение равно 0:
+\startformula \startalign[align=left]
+\NC \bmatrix{
+    2,3,2;
+    4,7,5;
+    2,0,1}
+    = 2(15 - 14) - 0 + 1(14 - 12) = 2 + 2 = 4 \ne 0 \NR
+\stopalign \stopformula
+Смешанное произведение векторов не равно 0, поэтому они не компланарны.
+\stoptext
