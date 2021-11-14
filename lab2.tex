@@ -1,0 +1,108 @@
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm, footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setuppagenumbering[location={footer,center}]
+
+\definemathmatrix[pmatrix][matrix:parentheses][simplecommand=pmatrix]
+\setupformulas[align=right]
+
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №2 }
+\centerline { «Группы, кольца, поля» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Ноябрь 2021 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\centerline {Задание №1}
+\startformula \startalign[align=left]
+\NC A = \mathbb{Z},\quad a*b = a + b^2,\quad \forall a,b \in \mathbb{Z} \NR
+\NC \forall a,b \in \mathbb{Z} \quad a + b^2 \in \mathbb{Z} \NR
+\stopalign \stopformula
+Операция $*$ определена на $\mathbb{Z}$, т.е. на $A$.
+\startformula \startalign[align=left]
+\NC \forall a,b,c \in \mathbb{Z} \quad
+    (a*b)*c = (a+b^2)+c^2 = a+b^2+c^2 \ne a+b^2+2bc^2+c^4 = a+(b+c^2)^2 \NR
+\stopalign \stopformula
+Операция $*$ не ассоциативна,
+поэтому $A$ с операцией $*$ полугруппой не является.
+Единичного элемента нет.
+\vfil
+
+
+\centerline {Задание №2}
+\startformula \startalign[align=left]
+\NC M = \{c-d\sqrt{2} \,\, | \,\, c,d \in \mathbb{Z}\}, \quad a*b = a+b, \quad
+    \forall a,b \in M \NR
+\NC \forall a,b \in M \NR
+\NC a*b = a+b = (c_a - d_a\sqrt{2}) + (c_b - d_b\sqrt{2})
+    = (c_a + c_b) - (d_a + d_b)\sqrt{2} = c - d\sqrt{2} \in M \NR
+\stopalign \stopformula
+Операция $*$ определена на $M$. Заметим, что $M \subset \mathbb{R}$. \\
+Операция $*$ ассоциативна на $M$ по наследству от $\mathbb{R}$. \\
+Операция $*$ коммутативна на $M$ по наследству от $\mathbb{R}$. \\
+В $M$ единичным элементом является $0 = 0 - 0\sqrt{2}$ по наследству от $\mathbb{R}$. \\
+Для каждого элемента $a$ обратным является $-a = (-c_a) - (-d_a)\sqrt{2}$ по наследству от $\mathbb{R}$. \\
+Таким образом, $M$ с операцией $*$ является абелевой группой.
+\vfil
+
+
+\centerline {Задание №3}
+\startformula \startalign[align=left]
+\NC M = \left{2k+1\ \ |\ \ k\in\mathbb{R}\setminus\left{-\frac12\right}\right}
+    = \mathbb{R}\setminus\left{-\frac12\cdot2+1\right}
+    = \mathbb{R}\setminus\{0\} = \mathbb{R}^* \NR
+\stopalign \stopformula
+$M$ не является аддитивный группой, т.к. в ней нет единичного элемента --- $0$.
+$M$ является мультипликативный группой, т.к. $M=\mathbb{R}^*$.
+\page
+
+
+\centerline {Задание №4}
+\startformula \startalign[align=left]
+\NC K = \left{\frac{a}{5^{k-1}}\ \ |\ \ a\in\mathbb{Z},\ k\in\mathbb{N}\right}
+    = \left{\frac{5^m\cdot c}{5^{k-1}}\ \ |\ \ c\in\mathbb{Z},\ m,k\in\mathbb{N}\right}
+    = \NR\NC = \left{\frac{c}{5^z}\ \ |\ \ c,z\in\mathbb{Z}\right}
+    = \left{c\cdot5^z\ \ |\ \ c,z\in\mathbb{Z}\right} \NR
+\NC \forall a,b \in K \quad
+    a+b = c_a5^z_a + c_b5^z_b
+    = 5^{\min{(z_a, z_b)}}\cdot(c_a5^{z_a - \min{(z_a, z_b)}}
+        + c_b^{z_b - \min{(z_b, z_b)}})
+    = \NR\NC = 5^z\cdot c = c\cdot5^z \in K \NR
+\stopalign \stopformula
+Операция $+$ определена на $K$. \\
+Операция $+$ на $K$ ассоциативна по наследству от $\mathbb{R}$. \\
+Операция $+$ на $K$ коммутативна по наследству от $\mathbb{R}$. \\
+Элемент $0 = 0\cdot5^0$ является единичным элементом по наследству от $\mathbb{R}$. \\
+Для каждого элемента $a$ обратным является $-a = (-c_a)5^z_a$ по наследству от $\mathbb{R}$. \\
+Таким образом, $M$ с операцией $+$ является абелевой группой.
+
+\startformula \startalign[align=left]
+\NC \forall a,b \in K \quad
+    a\cdot b = c_a5^z_a \cdot c_b5^z_b = c_a c_b 5^{z_a + z_b} = c5^z \in K \NR
+\stopalign \stopformula
+Операция $\cdot$ определена на $K$. \\
+Операция $\cdot$ на $K$ ассоциативна по наследству от $\mathbb{R}$. \\
+Операция $\cdot$ на $K$ дистрибутивна относительно $+$ по наследству от $\mathbb{R}$. \\
+Таким образом, $K$ с операциями $+$ и $\cdot$ является кольцом.
+\vfil
+
+
+\centerline {Задание №5}
+\startformula \startalign[align=left]
+\NC P = \left{(a,b)\ \ |\ \ a,b\in\mathbb{R} \right}, \quad
+    (a,b) + (c,d) = (a,d), \quad (a,b) \cdot (c,d) = (ac, bd) \NR
+\NC (1,0) + (0,1) = (1,1) \ne (0,0) = (0,1) + (1,0) \NR
+\stopalign \stopformula
+Операция $+$ на $P$ не является коммутативной, поэтому $P$ не может быть полем.
+\stoptext
