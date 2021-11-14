@@ -1,0 +1,124 @@
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setuppagenumbering[location={footer,center}]
+
+\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №4 }
+\centerline { «Сравнения» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Ноябрь 2021 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\centerline {Задание №1}
+\startformula \startalign[align=left]
+\NC a = 178^{274},\ b = 22\quad rem(a, b) =\ ? \NR
+\NC 178 \equiv 2 \pmod{22} \NR
+\NC 178^{11} \equiv 2^{11} = 2048 \equiv 2 \pmod{22} \NR
+\NC 178^{21} \equiv 2^{21} = 2^{11} \cdot 2^{10} \equiv 2 \cdot 12 \equiv 2 \pmod{22} \NR
+\NC 178^{1 + 10n} \equiv 2 \pmod{22} \NR
+\NC 178^{274} = 178^{271 + 3} = 178^{271} \cdot 178^3 \equiv 2^{271} \cdot 2^3 \equiv 2 \cdot 8
+    \equiv 16 \pmod{22} \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №2}
+\startformula \startalign[align=left]
+\NC a = 178^{274},\ b = 10\quad rem(a, b) =\ ? \NR
+\NC 178 \equiv 8 \pmod{10} \NR
+\NC 178^5 \equiv 8^5 = 32768 \equiv 8 \pmod{10} \NR
+\NC 178^9 \equiv 8^9 = 8^5 \cdot 8^4 \equiv 8 \cdot 6 \equiv 8 \pmod{10} \NR
+\NC 178^{4n + 1} \equiv 8 \pmod{10} \NR
+\NC 178^{274} = 178^{273} \cdot 178 \equiv 8^{273} \cdot 8 \equiv 8 \cdot 8 \equiv 4 \pmod{10} \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №3}
+\startformula \startalign[align=left]
+\NC c = 4^{323} + 26,\ d = 15;\quad c \equiv 0\ ?\pmod{d} \NR
+\NC 4^2 = 16 \equiv 1 \pmod{15} \NR
+\NC c = 4^{323} + 26 = 4^{322} \cdot 4 + 11 + 15 \equiv 1 \cdot 4 + 11 = 15 \equiv 0 \pmod{15} \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №4}
+\startformula \startalign[align=left]
+\NC a = 523908;\quad φ(a) =\ ? \NR
+\NC a = 523908 = 2^2 \cdot 3^5 \cdot 7^2 \cdot 11 \NR
+\NC φ(a) = (2^2 - 2)(3^5 - 3^4)(7^2 - 7)(11 - 1)
+    = 2 \cdot 162 \cdot 42 \cdot 10 = 136080 \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №5}
+\startformula \startalign[align=left]
+\NC m = 7,\quad \mathbb{Z}_m\ ? \NR
+\NC НОД(7, 2) = НОД(7, 3) = НОД(7, 4) = НОД(7, 5) = НОД(7, 6) = 1 \NR
+\NC 2 \cdot 4 \equiv 3 \cdot 5 \equiv 6 \cdot 6 \equiv 1 \pmod{7} \NR
+\stopalign \stopformula
+Таким образом, обратимыми элементами являются $1, 2, 3, 4, 5, 6$.
+Для них обратными элементами являются $1, 4, 5, 2, 3, 6$ соответственно.
+\page
+
+
+\centerline {Задание №6}
+\startformula \startalign[align=left]
+\NC m = 6,\quad \mathbb{Z}_m\ ? \NR
+\NC НОД(6, 2) = НОД(6, 4) = 2; НОД(6, 3) = 3; НОД(6, 5) = 1 \NR
+\stopalign \stopformula
+Таким образом, обратимыми элементами являются $1$ и $5$.
+Таблица умножения для них выглядит следующим образом:
+\starttable[|1|1|1|]
+\HL
+\VL * \VL 1 \VL 5 \VL\AR
+\HL
+\VL 1 \VL 1 \VL 5 \VL\AR
+\HL
+\VL 5 \VL 5 \VL 1 \VL\AR
+\HL
+\stoptable
+\vfil
+
+
+\centerline {Задание №7}
+\startformula \startalign[align=left]
+\NC 6x \equiv 22 \pmod{13} \NR
+\NC 6x \equiv 9 \pmod{13} \NR
+\NC 11 \cdot 6x \equiv 11 \cdot 9 \pmod{13} \NR
+\NC 66x \equiv 99 \pmod{13} \NR
+\NC x \equiv 8 \pmod{13} \NR
+\stopalign \stopformula
+Ответ: $x = 13k + 8,\quad \forall k \in \mathbb{Z}$
+\vfil
+
+
+\centerline {Задание №8}
+\startformula \startalign[align=left]
+\NC 15x - 21y = 42 \NR
+\NC 5(3x - 4y) - y = 5\cdot8 + 2 \NR
+\NC -y \equiv 2 \pmod{5} \Rightarrow y = 5k + 3 \forall k \in \mathbb{Z} \NR
+\NC 5(3x - 4(5k + 3)) - 5k - 3 = 40 + 2 \NR
+\NC 5(3x - 20k - 12) = 45 + 5k \NR
+\NC 3x - 20k - 12 = 9 + k \NR
+\NC 3x = 21 + 21k \NR
+\NC x = 7 + 7k \NR
+\stopalign \stopformula
+Ответ: $\forall k \in \mathbb{Z}\quad x = 7 + 7k,\ y = 5k + 3$
+\stoptext
