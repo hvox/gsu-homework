@@ -1,0 +1,175 @@
+\setuppapersize[A4]
+\setupbodyfont[libertinus]
+\mainlanguage[ru]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm, footer=1cm, width=middle, height=middle]
+
+\setuppagenumbering[location={footer,center}]
+\setupbodyfont[14pt]
+
+%\setupwhitespace[medium]
+%\setupindenting[medium, yes]
+
+\definemathmatrix[pmatrix][matrix:parentheses][simplecommand=pmatrix]
+\setupformulas[align=right]
+\definemathcommand [sgn] [nolop] {\mfunction{sgn}}
+
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №1 }
+\centerline { «Перестановки» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Октябрь 2021 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\centerline {Задание №1}
+\startformula \startalign[align=left]
+\NC α = \pmatrix{1,2,3,4,5,6,7,8,9;4,3,8,2,9,5,7,1,6} \NR
+\NC β = \pmatrix{1,2,3,4,5,6,7,8,9;7,1,9,5,4,2,6,8,3} \NR
+\NC α^{-1} = \pmatrix{4,3,8,2,9,5,7,1,6;1,2,3,4,5,6,7,8,9}
+    = \pmatrix{1,2,3,4,5,6,7,8,9;8,4,2,1,6,9,7,3,5} \NR
+\NC αβ = \pmatrix{
+    1,2,3,4,5,6,7,8,9; ↓,↓,↓,↓,↓,↓,↓,↓,↓;
+    7,1,9,5,4,2,6,8,3; ↓,↓,↓,↓,↓,↓,↓,↓,↓;
+    7,4,6,9,2,3,5,1,8} = \pmatrix{1,2,3,4,5,6,7,8,9;7,4,6,9,2,3,5,1,8} \NR
+\NC βα = \pmatrix{
+    1,2,3,4,5,6,7,8,9; ↓,↓,↓,↓,↓,↓,↓,↓,↓;
+    4,3,8,2,9,5,7,1,6; ↓,↓,↓,↓,↓,↓,↓,↓,↓;
+    5,9,8,1,3,4,6,7,2} = \pmatrix{1,2,3,4,5,6,7,8,9;5,9,8,1,3,4,6,7,2} \NR
+\NC (αβ)^2 = \pmatrix{
+    1,2,3,4,5,6,7,8,9; ↓,↓,↓,↓,↓,↓,↓,↓,↓;
+    7,4,6,9,2,3,5,1,8; ↓,↓,↓,↓,↓,↓,↓,↓,↓;
+    5,9,3,8,4,6,2,7,1} = \pmatrix{1,2,3,4,5,6,7,8,9;5,9,3,8,4,6,2,7,1} \NR
+\NC (βα)^{-1} = \pmatrix{5,9,8,1,3,4,6,7,2;1,2,3,4,5,6,7,8,9} 
+    = \pmatrix{1,2,3,4,5,6,7,8,9;4,9,5,6,1,7,8,3,2} \NR
+\NC β^{-2} = \pmatrix{7,1,9,5,4,2,6,8,3;1,2,3,4,5,6,7,8,9}^2
+    = \pmatrix{1,2,3,4,5,6,7,8,9;2,6,9,5,4,7,1,8,3}^2 = \NR
+\NC = \pmatrix{
+    1,2,3,4,5,6,7,8,9; ↓,↓,↓,↓,↓,↓,↓,↓,↓;
+    2,6,9,5,4,7,1,8,3; ↓,↓,↓,↓,↓,↓,↓,↓,↓;
+    6,7,3,4,5,1,2,8,9} = \pmatrix{1,2,3,4,5,6,7,8,9;6,7,3,4,5,1,2,8,9} \NR
+\stopalign \stopformula
+\page
+
+
+\centerline {Задание №2}
+\startformula \startalign[align=left]
+\NC α = \pmatrix{1,2,3,4,5,6,7,8,9;4,3,8,2,9,5,7,1,6} = (14238)(596)(7)
+    = (14)(42)(23)(38)(59)(96) \NR
+\NC \sgn{α} = (-1)^{(9-3)} = (-1)^6 = 1 \NR
+\stopalign \stopformula
+Перестановка $α$ четная.
+\startformula \startalign[align=left]
+\NC β = \pmatrix{1,2,3,4,5,6,7,8,9;7,1,9,5,4,2,6,8,3} = (1762)(39)(45)(8)
+    = (17)(76)(62)(39)(45) \NR
+\NC \sgn{β} = (-1)^{(9 - 4)} = (-1)^{5} = -1 \NR
+\stopalign \stopformula
+Перестановка $β$ нечетная.
+\vfill
+
+
+\centerline {Задание №3}
+\startformula \startalign[align=left]
+\NC σ = (157)(645)(213) = \pmatrix{1,2,3,4,5,6,7,8;3,5,2,7,6,4,1,8}
+    = (1325647)(8) \NR
+\NC τ = (124)(387)(65) = \pmatrix{1,2,3,4,5,6,7,8;2,4,8,1,6,5,3,7}
+    = (124)(387)(56) \NR
+\NC σ^{-1} = \pmatrix{3,5,2,7,6,4,1,8;1,2,3,4,5,6,7,8}
+    = \pmatrix{1,2,3,4,5,6,7,8;7,3,1,6,2,5,4,8} \NR
+\NC τ^{-1} = \pmatrix{2,4,8,1,6,5,3,7;1,2,3,4,5,6,7,8}
+    = \pmatrix{1,2,3,4,5,6,7,8;4,1,7,2,6,5,8,3} \NR
+\NC στ = \pmatrix{
+    1,2,3,4,5,6,7,8; ↓,↓,↓,↓,↓,↓,↓,↓;
+    2,4,8,1,6,5,3,7; ↓,↓,↓,↓,↓,↓,↓,↓;
+    5,7,8,3,4,6,2,1} = \pmatrix{1,2,3,4,5,6,7,8;5,7,8,3,4,6,2,1} \NR
+\NC τσ = \pmatrix{
+    1,2,3,4,5,6,7,8; ↓,↓,↓,↓,↓,↓,↓,↓;
+    3,5,2,7,6,4,1,8; ↓,↓,↓,↓,↓,↓,↓,↓;
+    8,6,4,3,5,1,2,7} = \pmatrix{1,2,3,4,5,6,7,8;8,6,4,3,5,1,2,7} \NR
+\NC \sgn{σ} = (-1)^{(8-2)} = (-1)^{6} = 1 \NR
+\NC \sgn{τ} = (-1)^{(8-3)} = (-1)^{5} = -1 \NR
+\NC \sgn{(σ^2 τ)} = (\sgn{σ})^2 (\sgn{τ}) = 1^2 ⋅ (-1) = -1 \NR
+\NC \sgn{((τ σ)^2 τ(τσ)^{-1})} = 
+    (\sgn{τ})^2 (\sgn{σ})^2 (\sgn{τ})
+    (\sgn{σ})^{-1} (\sgn{τ})^{-1} = \NR
+\NC = (-1)^2 ⋅ 1^2 ⋅ (-1) ⋅ 1^{-1} ⋅ (-1)^{-1} = 1 \NR
+\stopalign \stopformula
+\page[bigpreference]
+
+
+\centerline {Задание №4}
+\startformula \startalign[align=left]
+\NC γ = \pmatrix{1,2,3,4,5,6,7;2,i,1,3,k,j,6} 
+    = \pmatrix{1,2,3,4,5,6,7;1,2,3,i,j,6,k}
+    \pmatrix{1,2,3,4,5,6,7;2,4,1,3,5,7,6} \NR
+\stopalign \stopformula
+Пусть $γ_0 = \pmatrix{1,2,3,4,5,6,7;2,4,1,3,5,7,6}$
+и $γ_1 = \pmatrix{1,2,3,4,5,6,7;1,2,3,i,j,6,k}$. \\
+Тогда $γ = γ_1 γ_0$, $\sgn{γ} = \sgn{γ_1} ⋅ \sgn{γ_0} =
+\sgn{γ_1} ⋅ (-1)^{(7 - 3)} = \sgn{γ_1} ⋅ 1 = \sgn{γ_1}$. \\
+Рассмотрим разные возможные значения $i$, $j$, $k$:
+\startformula \startalign[align=left]
+\NC i=4∧j=5∧k=7 \Rightarrow \sgn{γ} = \sgn{γ_1} = \sgn{((4)(5)(7))} = (-1)^0 = 1 \NR
+\NC i=5∧j=7∧k=4 \Rightarrow \sgn{γ} = \sgn{γ_1} = \sgn{((4 5 7))} = (-1)^2 = 1 \NR
+\NC i=7∧j=4∧k=5 \Rightarrow \sgn{γ} = \sgn{γ_1} = \sgn{((4 7 5))} = (-1)^2 = 1 \NR
+\NC i=4∧j=7∧k=5 \Rightarrow \sgn{γ} = \sgn{γ_1} = \sgn{((7 5))} = (-1)^1 = -1 \NR
+\NC i=5∧j=4∧k=7 \Rightarrow \sgn{γ} = \sgn{γ_1} = \sgn{((4 5))} = (-1)^1 = -1 \NR
+\NC i=7∧j=5∧k=4 \Rightarrow \sgn{γ} = \sgn{γ_1} = \sgn{((7 4))} = (-1)^1 = -1 \NR
+\stopalign \stopformula
+Таким образом перестановка $γ$ четная если $i=4∧j=5∧k=7$ или
+$i=5∧j=7∧k=4$ или $i=7∧j=4∧k=5$.
+
+\startformula \startalign[align=left]
+\NC χ = \pmatrix{6,i,k,1,2,7,4;1,j,3,5,4,2,6}
+    = \pmatrix{1,2,i,4,k,6,7;5,4,j,6,3,1,2} \NR
+\NC = \pmatrix{1,2,i,4,k,6,7;5,4,7,6,3,1,2}
+    = \pmatrix{1,2,3,4,5,6,7;5,4,7,6,3,1,2}
+    \pmatrix{1,2,i,4,k,6,7;1,2,3,4,5,6,7} \NR
+\stopalign \stopformula
+Пусть $χ_0 = \pmatrix{1,2,3,4,5,6,7;5,4,7,6,3,1,2}$
+и $χ_1 = \pmatrix{1,2,i,4,k,6,7;1,2,3,4,5,6,7}$. \\
+Тогда $χ = χ_0 χ_1$, $\sgn{χ} = \sgn{χ_0} ⋅ \sgn{χ_1} =
+\sgn{(-1)^{(7 - 1)}} ⋅ \sgn{χ_1} = 1 ⋅ \sgn{χ_1} = \sgn{χ_1}$. \\
+Рассмотрим разные возможные значения $i$, $k$:
+\startformula \startalign[align=left]
+\NC i=3∧k=5 \Rightarrow \sgn{χ} = \sgn{χ_1} = \sgn{((3)(5))} = (-1)^0 = 1 \NR
+\NC i=5∧k=3 \Rightarrow \sgn{χ} = \sgn{χ_1} = \sgn{((3 5))} = (-1)^1 = -1 \NR
+\stopalign \stopformula
+Таким образом перестановка $χ$ нечетная если $i=5∧j=7∧k=3$.
+\page
+
+
+\centerline {Задание №5}
+\startformula \startalign[align=left]
+\NC ατβ = α^{-1} \Rightarrow τ = α^{-2}β^{-1} \NR
+\NC τ = \pmatrix{1,2,3,4,5,6,7,8,9;8,4,2,1,6,9,7,3,5}^2
+    \pmatrix{1,2,3,4,5,6,7,8,9;2,6,9,5,4,7,1,8,3} = \NR
+\NC = \pmatrix{1,2,3,4,5,6,7,8,9;3,1,4,8,9,5,7,2,6}
+    \pmatrix{1,2,3,4,5,6,7,8,9;2,6,9,5,4,7,1,8,3} = \NR
+\NC = \pmatrix{1,2,3,4,5,6,7,8,9;1,5,6,9,8,7,3,2,4} \NR
+\stopalign \stopformula
+\vfill
+
+
+\centerline {Задание №6}
+\startformula \startalign[align=left]
+\NC στ^{-1}γ = σ^{-1}τ \Rightarrow γ = τσ^{-2}τ \NR
+\NC τσ^{-2} = \pmatrix{1,2,3,4,5,6,7,8;2,4,8,1,6,5,3,7}
+    \pmatrix{1,2,3,4,5,6,7,8;7,3,1,6,2,5,4,8}^2 = \NR
+\NC = \pmatrix{1,2,3,4,5,6,7,8;2,4,8,1,6,5,3,7}
+    \pmatrix{1,2,3,4,5,6,7,8;4,1,7,5,3,2,6,8} = \NR
+\NC = \pmatrix{1,2,3,4,5,6,7,8;1,2,3,6,8,4,5,7} \NR
+\NC γ = τσ^{-2}τ = \pmatrix{1,2,3,4,5,6,7,8;1,2,3,6,8,4,5,7}
+    \pmatrix {1,2,3,4,5,6,7,8;2,4,8,1,6,5,3,7} = \NR
+\NC = \pmatrix{1,2,3,4,5,6,7,8;2,6,7,1,4,8,3,5} \NR
+\stopalign \stopformula
+\vfill
+\stoptext

@@ -1,0 +1,145 @@
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setuppagenumbering[location={footer,center}]
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\ \right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\ \right. }]
+
+\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №5 }
+\centerline { «Комплексные числа» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Ноябрь 2021 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\centerline {Задание №1}
+\startformula \startalign[align=left]
+\NC z_1 = -1 - 2i,\ z_2 = 4 + 3i \NR
+\NC z_1 + z_2 = 3 + i \NR
+\NC z_1 - z_2 = -5 - 5i \NR
+\NC z_1 \cdot z_2 = 2 - 11i \NR
+\NC \frac{z_1}{z_2} = \frac{-10-5i}{16+9} = -\frac25 - \frac15i \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №2}
+\startformula \startalign[align=left]
+\NC z_1 \cdot x + z_2 \cdot y = 2 - 5i \NR
+\NC (-1 - 2i) \cdot x + (4 + 3i) \cdot y = 2 - 5i \NR
+\NC (-x + 4y - 2) + i(-2x + 3y + 5) = 0 \NR
+\NC \lmat{-x+4y=2; 3y-2x=-5} \Rightarrow \lmat{x=5\frac15; y=1\frac45} \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №3}
+\startformula \startalign[align=left]
+\NC z_1 = -1 - 2i \NC z_2 = 4 + 3i \NR
+\NC \sqrt{z_1} = a + ib \NC \sqrt{z_2} = a + ib \NR
+\NC z_1 = a^2 - b^2 + 2iab \NC z_2 = a^2 - b^2 + 2iab \NR
+\NC -1 - 2i = a^2 - b^2 + 2iab \NC 4 + 3i = a^2 - b^2 + 2iab \NR
+\NC \lmat{-1=a^2-b^2; -2=2ab} \NC \lmat{4=a^2-b^2; 3=2iab} \NR
+\NC \umat{a=\sqrt{\frac{\sqrt5-1}2}, b=-\sqrt{\frac2{\sqrt5-1}};
+          a=-\sqrt{\frac{\sqrt5-1}2}, b=\sqrt{\frac2{\sqrt5-1}}} \quad \quad \NC
+    \umat{a=\frac3{\sqrt2}, b=\frac1{\sqrt2};
+          a=-\frac3{\sqrt2}, b=-\frac1{\sqrt2}} \NR
+\NC \umat{\sqrt{z_1}=\sqrt{\frac{\sqrt5-1}2}-i\sqrt{\frac2{\sqrt5-1}};
+          \sqrt{z_1}=-\sqrt{\frac{\sqrt5-1}2}+i\sqrt{\frac2{\sqrt5-1}}} \NC
+    \umat{\sqrt{z_2}=\frac3{\sqrt2}+i\frac1{\sqrt2};
+          \sqrt{z_2}=-\frac3{\sqrt2}-i\frac1{\sqrt2}} \NR
+\stopalign \stopformula
+\page
+
+
+\centerline {Задание №4}
+\startformula \startalign[align=left]
+\NC x^2 - (5-6i)x + 1 - 13i = 0 \NC x^2 + 3x + 5 = 0 \NR
+\NC x_{1,2} = \frac{5-6i \pm \sqrt{-11-60i - 4+52i}}2 \quad \quad
+    \NC x_{1,2} = \frac{-3 \pm \sqrt{9 - 20}}2 \NR
+\NC x_{1,2} = \frac{5-6i \pm \sqrt{-15-8i}}2 \NC x_{1,2} = \frac{-3 \pm \sqrt{-11}}2 \NR
+\NC x_{1,2} = \frac{5-6i \pm (1-4i)}2 \NC x_{1,2} = \frac{-3 \pm i\sqrt{11}}2 \NR
+\NC x_1 = 3-5i \NC x_1 = \frac{-3}2 + i\frac{\sqrt{11}}2 \NR
+\NC x_2 = 2-i \NC x_2 = \frac{-3}2 - i\frac{\sqrt{11}}2 \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №5}
+\startformula \startalign[align=left]
+\NC z_1 = \sqrt{12} + 2i \NC z_2 = -6i \NR
+\NC z_1 = 4(\frac{\sqrt{3}}2 + \frac12i) \NC z_2 = -6(0 + i) \NR
+\NC z_1 = 4(\cos{30^∘} + i\sin{30^∘}) \quad \quad \quad \quad \quad 
+    \NC z_2 = -6(\cos{90^∘} + i\sin{90^∘}) \NR
+\stopalign \stopformula
+\externalfigure[lab55.svg]
+\page
+
+
+\centerline {Задание №6}
+\startformula \startalign[align=left]
+\NC 7(-\sin{40^∘} - i\sin{130^∘}) \cdot 3(\cos{40^∘} - i\sin{320^∘}) = \NR
+\NC = 21(\sin{(-40^∘)} + i\sin{(-130^∘)}) \cdot (\cos{40^∘} + i\sin{(-320^∘)}) = \NR
+\NC = 21(\cos{130^∘} + i\sin{(-130^∘)}) \cdot (\cos{40^∘} + i\sin{40^∘}) = \NR
+\NC = 21(\cos{(-130^∘)} + i\sin{(-130^∘)}) \cdot (\cos{40^∘} + i\sin{40^∘}) = \NR
+\NC = 21(\cos{(40^∘-130^∘)} + i\sin{(40^∘-130^∘)}) \NR
+\NC = 21(\cos{(90^∘)} + i\sin{(90^∘)}) = 21(0 + i) = 21i \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №7}
+\startformula \startalign[align=left]
+\NC \lmat{2 < |z| < 3; -\frac{π}4 \le \arg{\left(\frac{z}{1 - i}\right)} \le π} \NR
+\NC \lmat{2 < |z| < 3; -\frac{π}4 \le
+    \arg{\left(\frac{z}{\sqrt{2}(\cos{\left(-\frac{π}4\right)} +
+        \sin{\left(-\frac{π}4\right)}}\right)} \le π} \NR
+\NC \lmat{2 < |z| < 3; -\frac{π}4 + \frac{π}4 \le
+    \arg{\left(\frac{z}{\sqrt{2}}\right)} \le π + \frac{π}4} \NR
+\NC \lmat{2 < |z| < 3; 0 \le \arg{z} \le \frac{5π}4} \NR
+\stopalign \stopformula
+\externalfigure[lab57.svg]
+\page
+
+
+\centerline {Задание №8}
+\startformula \startalign[align=left]
+\NC \left(\frac{\sqrt3}3 - \frac13\,i\right)^{30}
+    = \left(\frac23\left(\frac{\sqrt3}2 - \frac12\,i\right)\right)^{30}
+    = \left(\frac23\left(\cos{(-30^∘)} + i\sin{(-30^∘)}\right)\right)^{30} = \NR
+\NC = \left(\frac23\right)^{30} (\cos{(-30 \cdot 30)^∘} + i\sin{(-30 \cdot 30)^∘})
+    = \left(\frac23\right)^{30} (\cos{180^∘} + i\sin{180^∘}) = \NR
+\NC = \frac{2^{30}}{3^{30}} (-1 + 0) = -\frac{2^{30}}{3^{30}} \NR
+\stopalign \stopformula
+\startformula \startalign[align=left]
+\NC \sqrt[4]{-\sqrt3 - i}
+    = \sqrt[4]{2\left(-\frac{\sqrt3}2 - \frac12\, i\right)}
+    = \sqrt[4]{2\left(\cos{(-150^∘)} + i\sin{(-150^∘)}\right)} \NR
+\NC z_0 = \sqrt[4]{2} (\cos{(-37.5^∘)} + i\sin{(-37.5^∘)}) \NR
+\NC z_1 = \sqrt[4]{2} (\cos{(52.5^∘)} + i\sin{(52.5^∘)}) \NR
+\NC z_2 = \sqrt[4]{2} (\cos{(142.5^∘)} + i\sin{(142.5^∘)}) \NR
+\NC z_3 = \sqrt[4]{2} (\cos{(232.5^∘)} + i\sin{(232.5^∘)}) \NR
+\stopalign \stopformula
+\startformula \startalign[align=left]
+\NC \sqrt[6]{-1} = \sqrt[6]{(\cos{180^∘} + i\sin{180^∘})} \NR
+\NC z_0 = \cos{30^∘} + i\sin{30^∘} = \frac{\sqrt3}2 + \frac12\,i \NR
+\NC z_1 = \cos{90^∘} + i\sin{90^∘} = i \NR
+\NC z_2 = \cos{150^∘} + i\sin{150^∘} = -\frac{\sqrt3}2 + \frac12\,i \NR
+\NC z_3 = \cos{210^∘} + i\sin{210^∘} = -\frac{\sqrt3}2 - \frac12\,i \NR
+\NC z_4 = \cos{270^∘} + i\sin{270^∘} = -i \NR
+\NC z_5 = \cos{330^∘} + i\sin{330^∘} = \frac{\sqrt3}2 - \frac12\,i \NR
+\stopalign \stopformula
+\stoptext

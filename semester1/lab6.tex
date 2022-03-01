@@ -1,0 +1,248 @@
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setuppagenumbering[location={footer,center}]
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\,\right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\,\right. }]
+\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(\,}, right={\,\right) }]
+
+\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №6 }
+\centerline { «Матрицы» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Ноябрь 2021 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\centerline {Задание №1}
+\startformula \startalign[align=left]
+\NC A = \pmat{-3,2,0;1,4,3;2,1,1},\ B = \pmat{-2,1;3,5;5,4},\ C = \pmat{-i-1,2;0,-1} \NR
+\NC AB = \pmat{-3,2,0;1,4,3;2,1,1} \pmat{-2,1;3,5;5,4}
+    = \pmat{6 + 6 + 0, -3 + 10 + 0; -2 + 12 + 15, 1 + 20 +12; -4 + 3 + 5, 2 + 5 + 4}
+    = \pmat{12, 7; 25, 33; 4, 11} \NR
+\NC BA = \pmat{-2,1;3,5;5,4} \pmat{-3,2,0;1,4,3;2,1,1} = \left[\text{не существует}\right] \NR
+\NC B^TA = \pmat{-2,3,5;1,5,4} \pmat{-3,2,0;1,4,3;2,1,1}
+    = \pmat{6+3+10, -4+12+5, 0+9+5; -3+5+8, 2+20+4, 0+15+4} =
+\NR \NC = \pmat{19, 13, 14; 10, 26, 19} \NR
+\NC ABC = \pmat{12, 7; 25, 33; 4, 11} \pmat{-i-1,2;0,-1}
+    = \pmat{-12i-12 + 0, 24 - 7; -25i-25 + 0, 50 - 33; -4i-4 + 0, 8 - 11}
+    = \pmat{-12i-12, 17; -25i-25, 17; -4i-4, -3} \NR
+\NC CAB = \pmat{-i-1,2;0,-1}\pmat{-3,2,0;1,4,3;2,1,1}\pmat{-2,1;3,5;5,4}
+    = \left[\text{не существует}\right] \NR
+\NC B^TC = \pmat{-2,3,5;1,5,4} \pmat{-i-1,2;0,-1} 
+    = \left[\text{не существует}\right] \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №2}
+\startformula \startalign[align=left]
+\NC C^3 - 5C^2 + 2C + 4E_2 = \NR
+\NC = \pmat{2-2i, 4+6i; 0, -1}^3 -5\pmat{2i, -4-2i; 0, 1} +
+    2\pmat{-i-1,2;0,-1} + \pmat{4,0;0,4} = \NR
+\NC = \pmat{2-2i, 4+6i; 0, -1}^3 + \pmat{-10i, 20+10i; 0, -5} +
+    \pmat{-2i-2,4;0,-2} + \pmat{4,0;0,4} = \NR
+\NC = \pmat{4-14i, 28+16i; 0, -4} \NR
+\stopalign \stopformula
+\page
+
+
+\centerline {Задание №3}
+\startformula \startalign[align=left]
+\NC 5X + 3A - 2C^T = (2A-3C)^T,\ A = \pmat{2, -1; -3, 4} \NR
+\NC 5X + 3\pmat{2, -1; -3, 4} - 2\pmat{-i-1,0;2,-1}
+    = \left(2\pmat{2,-1;-3,4}-3\pmat{-i-1,2;0,-1}\right)^T \NR
+\NC 5X + \pmat{6, -3; -9, 12} + \pmat{2i+2,0;-4,2}
+    = \left(\pmat{4,-2;-6,8}+\pmat{3i+3,-6;0,3}\right)^T \NR
+\NC 5X + \pmat{8+2i, -3; -13, 14} = \pmat{7+3i,-8;-6,11}^T \NR
+\NC 5X + \pmat{8+2i, -3; -13, 14} = \pmat{7+3i,-6;-8,11} \NR
+\NC 5X = \pmat{7+3i - 8-2i,-6+3;-8+13,11-14} \NR
+\NC 5X = \pmat{-1+i,-3;5,-3} \NR
+\NC X = \pmat{-\frac15+\frac{i}5,-\frac35;1,-\frac35} \NR
+\stopalign \stopformula
+\page
+
+
+\centerline {Задание №4}
+\startformula \startalign[align=left]
+\NC \lmat{X + Y = \pmat{n - 8, 1; 0, n + 3};
+    2X + (n - 16)Y = \pmat{n + 5, 0; -2, 4}} \NR
+\NC \lmat{2X + 2Y = \pmat{2n - 16, 2; 0, 2n + 6};
+    2X + (n - 16)Y = \pmat{n + 5, 0; -2, 4}} \NR
+\NC \lmat{2X + 2Y = \pmat{2n - 16, 2; 0, 2n + 6};
+    (18 - n)Y = \pmat{n - 21, 2; 2, 2n + 2}} \NR
+\NC \lmat{2X + 2Y = \pmat{2n - 16, 2; 0, 2n + 6};
+    Y = \pmat{\frac{n - 21}{18 - n}, \frac2{18 - n}; \frac2{18 - n}, \frac{2n + 2}{18 - n}}} \NR
+\NC \lmat{2X = \pmat{2n - 16, 2; 0, 2n + 6} -
+    \pmat{\frac{n - 21}{18 - n}, \frac2{18 - n}; \frac2{18 - n}, \frac{2n + 2}{18 - n}};
+    Y = \pmat{\frac{n - 21}{18 - n}, \frac2{18 - n}; \frac2{18 - n}, \frac{2n + 2}{18 - n}}} \NR
+\NC \lmat{ 2X = \pmat{\frac{51n - 2n^2 - 267}{18 - n}, \frac{34-2n}{18-n};
+    -\frac2{18-n}, \frac{28n - 2n^2 + 46}{18 - n}} ;
+    Y = \pmat{\frac{n - 21}{18 - n}, \frac2{18 - n}; \frac2{18 - n}, \frac{2n + 2}{18 - n}}} \NR
+\NC \lmat{ X = \pmat{\frac{51n - 2n^2 - 267}{36 - 2n}, \frac{34-2n}{36 - 2n};
+    -\frac2{36 - 2n}, \frac{28n - 2n^2 + 46}{36 - 2n}} ;
+    Y = \pmat{\frac{n - 21}{18 - n}, \frac2{18 - n}; \frac2{18 - n}, \frac{2n + 2}{18 - n}}} \NR
+\stopalign \stopformula
+\page
+
+
+\centerline {Задание №5}
+\startformula \startalign[align=left]
+\NC A = \pmat{z, ω; ω, z} \NR
+\NC 5A^2 - 2A + 2E_2 = 0 \NR
+\NC 5\pmat{z^2 + ω^2, 2ωz; 2ωz, z^2 + ω^2} - 2\pmat{z,ω;ω,z} + 2\pmat{1,0;0,1} = 0 \NR
+\NC \pmat{5z^2 + 5ω^2 - 2z, 10ωz-2ω; 10ωz-2ω, 5z^2 + 5ω^2 - 2z} + \pmat{2,0;0,2} =0 \NR
+\NC \lmat{5z^2 + 5w^2 - 2z + 2 = 0; 10ωz - 2ω = 0} \NR
+\NC \lmat{5z^2 + 5w^2 - 2z + 2 = 0; 2ω(5z - 1) = 0} \NR
+\NC \umat{
+    \lmat{ω = 0 ; 5z^2 - 2z + 2 = 0} ;
+    \lmat{z = \frac15 ; \frac15 + 5w^2 - \frac25 + 2 = 0}
+} \NR
+\NC \umat{
+    \lmat{ω = 0; z_{1,2} = \frac{4 \pm \sqrt{4 - 40}}{10}} ;
+    \lmat{z = \frac15; ω = \pm \sqrt{-\frac9{25}}}
+} \NR
+\NC \umat{
+    \lmat{ω = 0; z_{1,2} = \frac{2 \pm i3}{5}} ;
+    \lmat{z = \frac15; ω = \pm \frac{3i}5}
+} \NR
+\NC \umat{
+    ω = 0\ ∧\ z = \frac{2 + i3}5 ;
+    ω = 0\ ∧\ z = \frac{2 - i3}5 ;
+    ω = \frac{3i}5\ ∧\ z = \frac15;
+    ω = -\frac{3i}5\ ∧\ z = \frac15;
+} \NR
+\stopalign \stopformula
+\page
+
+
+\centerline {Задание №6}
+\startformula \startalign[align=left]
+\NC A = \pmat{-3,2,0;1,4,3;2,1,1},\ B = \pmat{-2,1;3,5;5,4},\ C = \pmat{-i-1,2;0,-1} \NR
+\NC \pmat{-3,2,0;1,4,3;2,1,1} \rightarrow
+    \pmat{-3,2,0;3,12,9;6,3,3} \rightarrow
+    \pmat{-3,2,0;0,14,9;0,7,3} \rightarrow
+    \pmat{-3,2,0;0,14,9;0,0,-3} \NR
+\NC \pmat{-2,1;3,5;5,4} \rightarrow
+    \pmat{-2,1;0,6\frac12; 0,6\frac12} \rightarrow
+    \pmat{-2,1;0,6\frac12; 0, 0} \NR
+\NC \pmat{-i-1,2;0,-1} \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №7}
+\startformula \startalign[align=left]
+\NC F = \pmat{-2,1,3,4; 4,-1,-1,9; 2,-1,-2,0; -2,2,9,6} \NR
+\NC (F\ |\ E) =
+    \pmat{-2, 1, 3, 4,\ ,1,0,0,0;
+           4,-1,-1, 9,\ ,0,1,0,0;
+           2,-1,-2, 0,\ ,0,0,1,0;
+          -2, 2, 9, 6,\ ,0,0,0,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 1, 3, 4,\ , 1,0,0,0;
+           0, 1, 5,17,\ , 2,1,0,0;
+           0, 0, 1, 4,\ , 1,0,1,0;
+           0, 1, 6, 2,\ ,-1,0,0,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 1, 3,  4,\ ,  1, 0,0,0;
+           0, 1, 5, 17,\ ,  2, 1,0,0;
+           0, 0, 1,  4,\ ,  1, 0,1,0;
+           0, 0, 1,-15,\ , -3,-1,0,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 1, 3,  4,\ ,  1, 0, 0,0;
+           0, 1, 5, 17,\ ,  2, 1, 0,0;
+           0, 0, 1,  4,\ ,  1, 0, 1,0;
+           0, 0, 0,-19,\ , -4,-1,-1,1;
+           } \rightarrow \NR
+\stopalign \stopformula
+\startformula \startalign[align=left]
+\NC \pmat{-2, 1, 3,  4,\ ,  1, 0, 0,0;
+           0, 1, 5, 17,\ ,  2, 1, 0,0;
+           0, 0, 1,  0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0,-19,\ , -4,-1,-1,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 1, 3,  4,\ ,  1, 0, 0,0;
+           0, 1, 5,  0,\ , -\frac{30}{19}, \frac2{19}, -\frac{17}{19}, \frac{17}{19};
+           0, 0, 1,  0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0,-19,\ , -4,-1,-1,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 1, 3,  0,\ , \frac3{19}, -\frac4{19}, -\frac{4}{19}, \frac4{19};
+           0, 1, 5,  0,\ , -\frac{30}{19}, \frac2{19}, -\frac{17}{19}, \frac{17}{19};
+           0, 0, 1,  0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0,-19,\ , -4,-1,-1,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 1, 3,  0,\ , \frac3{19}, -\frac4{19}, -\frac{4}{19}, \frac4{19};
+           0, 1, 0,  0,\ , -\frac{45}{19}, \frac{22}{19}, -\frac{92}{19}, -\frac{3}{19};
+           0, 0, 1,  0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0,-19,\ , -4,-1,-1,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 1, 0,  0,\ , -\frac6{19}, \frac8{19}, -\frac{49}{19}, -\frac8{19};
+           0, 1, 0,  0,\ , -\frac{45}{19}, \frac{22}{19}, -\frac{92}{19}, -\frac{3}{19};
+           0, 0, 1,  0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0,-19,\ , -4,-1,-1,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 0, 0,  0,\ , \frac{39}{19}, -\frac{14}{19}, \frac{43}{19}, -\frac5{19};
+           0, 1, 0,  0,\ , -\frac{45}{19}, \frac{22}{19}, -\frac{92}{19}, -\frac{3}{19};
+           0, 0, 1,  0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0,-19,\ , -4,-1,-1,1;
+           } \rightarrow \NR
+\NC \pmat{-2, 0, 0, 0,\ , \frac{39}{19}, -\frac{14}{19}, \frac{43}{19}, -\frac5{19};
+           0, 1, 0, 0,\ , -\frac{45}{19}, \frac{22}{19}, -\frac{92}{19}, -\frac{3}{19};
+           0, 0, 1, 0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0, 1,\ , \frac4{19}, \frac1{19}, \frac1{19}, -\frac1{19};
+           } \NR
+\stopalign \stopformula
+\startformula \startalign[align=left]
+\NC \pmat{-2, 0, 0, 0,\ , \frac{39}{19}, -\frac{14}{19}, \frac{43}{19}, -\frac5{19};
+           0, 1, 0, 0,\ , -\frac{45}{19}, \frac{22}{19}, -\frac{92}{19}, -\frac{3}{19};
+           0, 0, 1, 0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0, 1,\ , \frac4{19}, \frac1{19}, \frac1{19}, -\frac1{19};
+           } \rightarrow \NR
+\NC \pmat{ 1, 0, 0, 0,\ , -\frac{39}{38}, \frac{7}{19}, -\frac{43}{38}, \frac5{38};
+           0, 1, 0, 0,\ , -\frac{45}{19}, \frac{22}{19}, -\frac{92}{19}, -\frac{3}{19};
+           0, 0, 1, 0,\ , \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           0, 0, 0, 1,\ , \frac4{19}, \frac1{19}, \frac1{19}, -\frac1{19};
+           } \NR
+\NC F^{-1} = \pmat{ -\frac{39}{38}, \frac{7}{19}, -\frac{43}{38}, \frac5{38};
+           -\frac{45}{19}, \frac{22}{19}, -\frac{92}{19}, -\frac{3}{19};
+           \frac3{19}, -\frac4{19}, \frac{15}{19}, \frac4{19};
+           \frac4{19}, \frac1{19}, \frac1{19}, -\frac1{19}; } \NR
+\stopalign \stopformula
+\vfil
+
+
+\centerline {Задание №8}
+\startformula \startalign[align=left]
+\NC C = \pmat{-i-1,2;0,-1} \NR
+\NC (C\ |\ E) = \pmat{
+-i -1,  2,\ , 1, 0;
+    0, -1,\ , 0, 1;
+} \rightarrow \NR \NC \pmat{
+-i -1,  0,\ , 1, 2;
+    0, -1,\ , 0, 1;
+} \rightarrow \pmat{
+-i -1,  0,\ , 1, 2;
+    0, 1,\ , 0, -1;
+} \rightarrow \NR \NC \pmat{
+    1, 0,\ , \frac1{-i-1}, \frac2{-i-1};
+    0, 1,\ , 0, -1;
+} \rightarrow \pmat{
+    1, 0,\ , -\frac12 + \frac{i}2, -1 + i;
+    0, 1,\ , 0, -1;
+} \rightarrow \NR
+\NC C^{-1} = \pmat{ -\frac12 + \frac{i}2, -1 + i; 0,-1} \NR
+\stopalign \stopformula
+\stoptext
