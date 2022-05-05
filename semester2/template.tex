@@ -2,7 +2,7 @@
 \definecolor[solutionheadercolor][r=0.5, b=1]
 \setuphead[subject][color=headingcolor, indentnext=yes]
 \setuphead[subsubject][color=solutionheadercolor, indentnext=yes]
-\setuphead[subject][style={\ss\bfa}, before={\bigskip\bigskip\bigskip}, after={}]
+\setuphead[subject][style={\ss\bfa}, before={\bigskip\bigskip\bigskip\bigskip}, after={}]
 \setuphead[subsubject][style={\ss\bfa}, before={}, after={}]
 
 \setuppapersize[A4]
@@ -40,7 +40,7 @@
 \setuppagenumbering[state=start]
 \setuppagenumber[number=1]
 \setuppagenumbering[location={footer,center}]
-\setupfootertexts[\date \hfill Страница \pagenumber\ / \lastpagenumber]
+\setupfootertexts[\qquad \date \hfill Страница \pagenumber\ / \lastpagenumber \qquad]
 
 \subject {Задание №1}
 TODO
