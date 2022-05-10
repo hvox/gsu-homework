@@ -1,0 +1,325 @@
+\definecolor[headingcolor][r=1, b=0.5]
+\definecolor[solutionheadercolor][r=0.9, b=1]
+\setuphead[subject][color=headingcolor, indentnext=yes]
+\setuphead[subsubject][color=solutionheadercolor, indentnext=yes]
+\setuphead[subject][style={\ss\bfa}, before={\bigskip\bigskip\bigskip\bigskip}, after={}]
+\setuphead[subsubject][style={\ss\bfa}, before={}, after={}]
+
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setupwhitespace[medium]
+\setupindenting[medium, yes]
+
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\,\right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\,\right. }]
+\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(\,}, right={\,\right) }]
+\definemathmatrix[dmatrix][simplecommand=dmat, left={\left|\,}, right={\,\right| }]
+\definemathmatrix[gmatrix][simplecommand=grid, left={\left.\,}, right={\,\right. }]
+\definemathcommand[arctg][nolop]{\mfunction{arctg}}
+
+\setupindenting[medium,yes]
+%\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №3 }
+\centerline { «Подпространство линейного пространства» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Май 2022 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\setuppagenumbering[location={footer,center}]
+\setupfootertexts[\qquad \date \hfill Страница \pagenumber\ / \lastpagenumber \qquad]
+
+\subject {Задание №1}
+Являются ли подпространствами линейного пространства $M(n, {\Bbb C})$ следующее множество:
+множество всех вырожденных матриц.
+\subsubject {Решение}
+Нет, множество всех вырожденных матриц не является линейным пространством, т.к 
+сумма двух вырожденных матриц не всегда является вырожденной матрицей. Например,
+\startformula
+\pmat{1, 0; 0, 0} + \pmat{0, 0; 0, 1} = \pmat{1, 0; 0, 1},\ \dmat{1, 0; 0, 1} = 1
+\stopformula
+
+
+\subject {Задание №2}
+Является ли подпространством линейного пространства $C_{[a,b]}$ множество всех функций $f(x)$, удовлетворяющих
+следующим условиям?
+\startformula
+	f(x) = a + bx, \ a,b ∈ {\Bbb R}
+\stopformula
+\subsubject {Решение}
+Покажем, что сумма любых двух элементов этого множества так же является элементом этого множества:
+\startformula
+	f_1(x) + f_2(x) = (a_1 + b_1x) + (a_2 + b_2x) = (a_1 +a_2) + (b_1+b_2)x = a_3 + b_3x = f_3(x)
+\stopformula
+Покажем, что произведение элемента этого множества на число $γ \in {\Bbb R}$ так же является элементом этого множества:
+\startformula
+	γ f_1(x) = γ \cdot (a_1 + b_1x) =  γa_1 + (γb_1)x = a_2 + b_2x = f_2(x)
+\stopformula
+Таким образом, вышеуказанное множество является замкнутым относительно операций сложения и умножения на число.
+Следовательно, оно является подпространством линейного пространства $C_{[a,b]}$.
+
+
+\subject {Задание №3}
+Найдите размерность и базис линейной оболочки $L(a_1, a_2, a_3, a_4)$ системы векторов из ${\Bbb R}^4$.
+\startformula
+	a_1=(1,1,1,1)\quad a_2=(1,1,-1,-1)\quad a_3=(2,2,0,0)\quad a_4=(1,-1,-1,0)
+\stopformula
+\subsubject {Решение}
+Для того, чтобы найти базис линейной оболочки $L(a_1, a_2, a_3, a_4)$ будем из системы векторов
+$a_1$, $a_2$, $a_3$, $a_4$ последовательно удалять те векторы, которые линейно выражаются через предыдущие.
+Нетрудно заметить, что $a_1$ и $a_2$ являются линейно независимыми векторами.
+Проверим на независимость $a_1$, $a_2$, $a_3$:
+\startformula \startalign
+\NC α_1 a_1 + α_2 a_2 + α_3 a_3 \NC = 0 \NR
+\NC α_1 (1,1,1,1) + α_2 (1,1,-1,-1) + α_3 (2,2,0,0) \NC = 0 \NR
+\stopalign \stopformula
+\startformula \startcases
+α_1 + α_2 + 2α_3 = 0 \NR
+α_1 + α_2 + 2α_3 = 0 \NR
+α_1 - α_2 = 0 \NR
+α_1 - α_2 = 0 \NR
+\stopcases 
+\Rightarrow
+\startcases
+α_1 = -α_3 \NR
+α_2 = -α_3 \NR
+\stopcases 
+\stopformula
+У системы есть ненулевые решения, поэтому вектор $a_3$ линейно выражается из $a_1$ и $a_2$.
+Проверим на независимость $a_1$, $a_2$, $a_4$:
+\startformula \startalign
+\NC α_1 a_1 + α_2 a_2 + α_3 a_4 \NC = 0 \NR
+\NC α_1 (1,1,1,1) + α_2 (1,1,-1,-1) + α_3 (1,-1,-1,0) \NC = 0 \NR
+\stopalign \stopformula
+\startformula \startcases
+α_1 + α_2 + α_3 = 0 \NR
+α_1 + α_2 - α_3 = 0 \NR
+α_1 - α_2 - α_3 = 0 \NR
+α_1 - α_2 = 0 \NR
+\stopcases 
+\Rightarrow
+\startcases
+α_1 = 0 \NR
+α_2 = 0 \NR
+α_3 = 0 \NR
+α_4 = 0 \NR
+\stopcases 
+\stopformula
+У системы нет ненулевых решений. Следовательно, вектора $a_1$, $a_2$, $a_4$ являются линейно независимыми и
+образуют базис линейной оболочки $L(a_1, a_2, a_3, a_4)$. А её размерность равна трём.
+
+
+\subject {Задание №4}
+Найдите размерность и базис линейной оболочки $L(a_1, a_2, a_3)$ векторов из ${\Bbb R}_2[x]$.
+\startformula
+	a_1=3x^2-1 \qquad a_2=2x+1 \qquad a_3=x^2+x-1
+\stopformula
+\subsubject {Решение}
+Для того, чтобы найти базис линейной оболочки $L(a_1, a_2, a_3)$ будем из системы векторов
+$a_1$, $a_2$, $a_3$ последовательно удалять те векторы, которые линейно выражаются через предыдущие.
+Нетрудно заметить, что $a_1$ и $a_2$ являются линейно независимыми векторами.
+Проверим на независимость $a_1$, $a_2$, $a_3$:
+\startformula \startalign
+\NC α_1 a_1 + α_2 a_2 + α_3 a_3 \NC = 0 \NR
+\NC α_1 (3x^2-1) + α_2 (2x+1) + α_3 (x^2+x-1) \NC = 0 \NR
+\stopalign \stopformula
+\startformula \startcases
+3α_1 + α_3 = 0 \NR
+2α_2 + α_3 = 0 \NR
+-α_1 + α_2 - α_3 = 0 \NR
+\stopcases 
+\Rightarrow
+\startcases
+α_1 = 0 \NR
+α_2 = 0 \NR
+α_3 = 0 \NR
+\stopcases 
+\stopformula
+У системы нет ненулевых решений. Следовательно, вектора $a_1$, $a_2$, $a_3$ являются линейно независимыми и
+образуют базис линейной оболочки $L(a_1, a_2, a_3)$. А её размерность равна трём.
+
+
+\subject {Задание №5}
+Найдите размерность и базис суммы, а также размерность пересечения подпространств $A=L(a_1, a_2, a_3)$ и
+$B=L(b1, b2)$ линейного пространства ${\Bbb R}^3$.
+Принадлежит ли вектор $x$ пространствам $L(a_1, a_2, a_3)$, $L(b_1, b_2)$?
+\startformula
+	a_1=(0,1,3) \qquad a_2=(-1,2,0) \qquad a_3=(-1,3,3)
+\stopformula \startformula
+	b_1=(-1,2,3) \qquad b_2=(3,2,1) \qquad x=(0,-1,2)
+\stopformula
+\subsubject {Решение}
+Проверим на независимость $a_1$, $a_2$, $a_3$:
+\startformula \startalign
+\NC α_1 a_1 + α_2 a_2 + α_3 a_3 \NC = 0 \NR
+\NC α_1 (0,1,3) + α_2 (-1,2,0) + α_3 (-1,3,3) \NC = 0 \NR
+\stopalign \stopformula
+\startformula \startcases
+0   -α_2  -α_3 = 0 \NR
+α_1+ 2α_2+ 3α_3 =0\NR
+3α_1 + 0 + 3α_3 =0\NR
+\stopcases 
+\Rightarrow
+\startcases
+α_1 = -α_3 \NR α_2 = -α_3 \NR
+\stopcases 
+\stopformula
+У системы есть ненулевые решения. Следовательно, вектор $a_3$ линейно выражается из $a_1$ и $a_2$.
+Проверим на независимость $a_1$, $a_2$, $b_1$:
+\startformula \startalign
+\NC α_1 a_1 + α_2 a_2 + α_3 b_1 \NC = 0 \NR
+\NC α_1 (0,1,3) + α_2 (-1,2,0) + α_3 (-1,2,3) \NC = 0 \NR
+\stopalign \stopformula
+\startformula \startcases
+0   -α_2  -α_3 = 0 \NR
+α_1+ 2α_2+ 2α_3 =0\NR
+3α_1 + 0 + 3α_3 =0\NR
+\stopcases 
+\Rightarrow
+\startcases
+α_1 = 0 \NR α_2 = 0 \NR α_3 = 0 \NR
+\stopcases 
+\stopformula
+У системы нет ненулевых решений. Следовательно, вектора $a_1$, $a_2$, $b_1$ являются линейно независимыми и
+образуют базис линейной оболочки $L(a_1, a_2, a_3, b_1, b_2)$. А её размерность равна трём.
+Проверять на независимость $a_1$, $a_2$, $b_1$, $b_2$ нет смысла, т.к. четыре вектора не могут быть линейно независимыми
+в трёхмерном пространстве. Вычислим размерности суммы и разности $A$ и $B$:
+\startformula \startalign
+\NC \text{dim}(A + B) \NC = \text{dim}(L(a_1, a_2, a_3, b_1, b_2)) = 3 \NR
+\NC \text{dim}(A ∩ B) \NC = \text{dim}(A) + \text{dim}(B) - \text{dim}(A + B) = 2 + 2 - 3 = 1 \NR
+\stopalign \stopformula
+Проверим, принадлежит ли вектор $x$ пространству $L(a_1, a_2, a_3)$:
+\startformula \startalign
+\NC α_1 a_1 + α_2 a_2 \NC = x \NR
+\NC α_1 (0,1,3) + α_2 (-1,2,0) \NC = (0,-1,2) \NR
+\stopalign \stopformula
+\startformula \startcases
+0   -α_2 = 0 \NR
+α_1+ 2α_2 =-1\NR
+3α_1 + 0  =-2\NR
+\stopcases 
+\stopformula
+У полученной системы нет решений, следовательно, вектор $x$ не принадлежит пространству $L(a_1, a_2, a_3)$:
+Проверим, принадлежит ли вектор $x$ пространству $L(b_1, b_2)$:
+\startformula \startalign
+\NC α_1 b_1 + α_2 b_2 \NC = x \NR
+\NC α_1 (-1,2,3) + α_2 (3,2,1) \NC = (0,-1,2) \NR
+\stopalign \stopformula
+\startformula \startcases
+-α_1 + 2α_2 = 0 \NR
+2α_1 + 2α_2 = -1 \NR
+3α_1 + α_2 = 2   \NR
+\stopcases 
+\stopformula
+У полученной системы нет решений, следовательно, вектор $x$ не принадлежит пространству $L(b_1, b_2)$.
+
+
+\subject {Задание №6}
+Пусть в пространстве ${\Bbb R}^4$ заданы подпространства $A = L(a_1, a_2)$ и $B = L(a_3, a_4)$.
+Докажите, что ${\Bbb R}^4 = A \oplus B$.
+Представьте вектор $x$ в виде $x = x_1 + x_2$, где $x_1 ∈ A$, $x_2 ∈ B$.
+\startformula
+	a_1=(1,2,3,-1) \quad a_2=(2,3,-4,4) \quad a_3=(3,-4,2,1)
+\stopformula \startformula
+	a_4 = (2, −3, 1, −4) \qquad x = (0, 9, −3, 2)
+\stopformula
+\subsubject {Решение}
+Проверим на линейную независимость $a_1$, $a_2$, $a_3$, $a_4$:
+\startformula
+α_1 a_1 + α_2 a_2 + α_3 a_3 + α_4 a_4 = 0
+\stopformula
+\startformula \startcases
+ α_1 + 2α_2 + 3α_3 + 2α_4 = 0 \NR
+2α_1 + 3α_2  -4α_3  -3α_4 = 0 \NR
+3α_1  -4α_2 + 2α_3 +  α_4 = 0 \NR
+-α_1 + 4α_2 +  α_3  -4α_4 = 0 \NR
+\stopcases 
+\Rightarrow
+\startcases
+α_1 = 0 \NR α_2 = 0 \NR α_3 = 0 \NR α_4 = 0 \NR
+\stopcases 
+\stopformula
+У системы нет ненулевых решений. Следовательно, вектора $a_1$, $a_2$, $a_3$, $a_4$ являются линейно независимыми и
+образуют базис линейной оболочки $L(a_1, a_2, a_3, a_4) = A \oplus B $. А её размерность равна четырём.
+Поскольку $\text{dim}({\Bbb R}^4) = 4$ и $\text{dim}(A \oplus B) = 4$, то ${\Bbb R}^4 = A \oplus B$,
+что и требовалось доказать.
+\par
+Представим вектор $x$ в виде $x = x_1 + x_2$, где $x_1 ∈ A$, $x_2 ∈ B$:
+\startformula
+α_1 a_1 + α_2 a_2 + α_3 a_3 + α_4 a_4 = x
+\stopformula
+\startformula \startcases
+ α_1 + 2α_2 + 3α_3 + 2α_4 = 0 \NR
+2α_1 + 3α_2  -4α_3  -3α_4 = 9 \NR
+3α_1  -4α_2 + 2α_3 +  α_4 = -3 \NR
+-α_1 + 4α_2 +  α_3  -4α_4 = 2 \NR
+\stopcases 
+\Rightarrow
+\startcases
+α_1 = 1 \NR α_2 = 1 \NR α_3 = -1 \NR α_4 = 0 \NR
+\stopcases 
+\Rightarrow
+\startcases
+x = x_1 + x_2 \NR
+x_1 = a_1 + a_2 \in A\NR
+x_2 = -a_3 \in B \NR
+\stopcases 
+\stopformula
+
+
+
+
+\subject {Задание №7}
+Линейная оболочка системы векторов $a_1$, $a_2$, $a_3$ является пространством решений
+некоторой однородной системы линейных уравнений. Найдите эту систему уравнений.
+\startformula
+	a_1=(1,1,1,1)\qquad a_2=(1,1,-1,-1)\qquad a_3=(2,2,0,0)
+\stopformula
+\subsubject {Решение}
+Проверим на линейную независимость вектора $a_1$, $a_2$, $a_3$:
+\startformula \startalign
+\NC α_1 a_1 + α_2 a_2 + α_3 a_3 \NC = 0 \NR
+\NC α_1 (1,1,1,1) + α_2 (1,1,-1,-1) + α_3 (2,2,0,0) \NC = 0 \NR
+\stopalign \stopformula
+\startformula \startcases
+α_1 + α_2 + 2α_3 = 0 \NR
+α_1 + α_2 + 2α_3 = 0 \NR
+α_1 - α_2 = 0 \NR
+α_1 - α_2 = 0 \NR
+\stopcases 
+\Rightarrow
+\startcases
+α_1 = -α_3 \NR
+α_2 = -α_3 \NR
+\stopcases 
+\stopformula
+У системы есть ненулевые решения, поэтому вектор $a_3$ линейно выражается из $a_1$ и $a_2$.
+Вектора $a_1$ и $a_2$ линейно независимы, следовательно, они являются базисом пространства решений.
+Пространство решений можно записать таким образом:
+\startformula
+	(x_1, x_2, x_3, x_4) = α_1 a_1 + α_2 a_2 = (α_1 + α_2,\ α_1 + α_2,\ α_1 - α_2,\ α_1 - α_2) = (a, a, b, b)
+\stopformula
+Вышеуказанное уравнение эквивалентно следующей однородной системе:
+\startformula \startcases
+x_1 = x_2 \NR
+x_3 = x_4 \NR
+\stopcases \text{или} \quad \startcases
+x_1 - x_2 = 0 \NR
+x_3 - x_4 = 0 \NR
+\stopcases \stopformula
+что и требовалось найти.
+
+\stoptext
