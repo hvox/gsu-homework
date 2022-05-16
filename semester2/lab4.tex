@@ -1,0 +1,356 @@
+\definecolor[headingcolor][r=1]
+\definecolor[solutionheadercolor][r=0.5, b=1]
+\setuphead[subject][color=headingcolor, indentnext=yes]
+\setuphead[subsubject][color=solutionheadercolor, indentnext=yes]
+\setuphead[subject][style={\ss\bfa}, before={\bigskip\bigskip\bigskip\bigskip}, after={}]
+\setuphead[subsubject][style={\ss\bfa}, before={}, after={}]
+
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setupwhitespace[medium]
+\setupindenting[medium, yes]
+
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\,\right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\,\right. }]
+\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(\,}, right={\,\right) }]
+\definemathmatrix[dmatrix][simplecommand=dmat, left={\left|\,}, right={\,\right| }]
+\definemathmatrix[gmatrix][simplecommand=grid, left={\left.\,}, right={\,\right. }]
+\definemathcommand[arctg][nolop]{\mfunction{arctg}}
+
+\setupindenting[medium,yes]
+%\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №4 }
+\centerline { «Линейные отображения линейных пространств» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Апрель 2022 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\setuppagenumbering[location={footer,center}]
+\setupfootertexts[\qquad \date \hfill Страница \pagenumber\ / \lastpagenumber \qquad]
+
+\subject {Задание №1}
+В трехмерном линейном пространстве с базисом $e_1$, $e_2$, $e_3$ отображение $φ$ переводит произвольный вектор
+\startformula c = c_1 e_1 + c_2 e_2 + c_3 e_3 \stopformula
+в вектор 
+\startformula 
+	φ(c) = (ac_1 − bc_2)e_1 + (c_1 − ac_2)e_2 + (c_2 − bc_3)e_3,\ \text{где}\ 
+	a = 2,\ b = 1
+\stopformula
+Является ли это отображение линейным оператором?
+В случае положительного ответа: запишите матрицу линейного оператора $φ$ в базисе $e_1$, $e_2$, $e_3$,
+найдите ядро линейного оператора $φ$, найдите ранг и дефект оператора $φ$.
+\subsubject {Решение}
+Проверим условие аддитивности:
+\startformula \startalign
+\NC φ(x+y) \NC = φ(x_1 e_1 + x_2 e_2 + x_3 e_3 + y_1 e_1 + y_2 e_2 + y_3 e_3) \NR
+\NC \NC = φ((x_1 + y_1) e_1 + (x_2 + y_2) e_2 + (x_3 + y_3) e_3) \NR
+\NC \NC = (2(x_1 + y_1) - (x_2 + y_2))e_1 + \NR
+\NC \NC \qquad + ((x_1 + y_1) - 2(x_2 + y_2))e_2 + (x_2 + y_2 - x_3 - y_3)e_3 \NR
+\NC \NC = (2x_1 - x_2)e_1 + (x_1 - 2x_2)e_2 + (x_2 - x_3)e_3 + \NR
+\NC \NC \qquad + (2y_1 - y_2)e_1 + (y_1 - 2y_2)e_2 + (y_2 - y_3)e_3 \NR
+\NC \NC = φ(x_1 e_1 + x_2 e_2 + x_3 e_3) + φ(y_1 e_1 + y_2 e_2 + y_3 e_3) \NR
+\NC \NC = φ(x) + φ(y) \NR
+\stopalign \stopformula
+Проверим условие однородности:
+\startformula \startalign
+\NC φ(αx) \NC = φ(α x_1 e_1 + α x_2 e_2 + α x_3 e_3) \NR
+\NC \NC = (2αx_1 − αx_2)e_1 + (αx_1 − 2αx_2)e_2 + (αx_2 − αx_3)e_3 \NR
+\NC \NC = α((2x_1 - x_2)e_1 + (x_1 - 2x_2)e_2 + (x_2 - x_3)e_3) \NR
+\NC \NC = α φ(x_1 e_1 + x_2 e_2 + x_3 e_3) \NR
+\NC \NC = α φ(x) \NR
+\stopalign \stopformula
+Поскольку условия аддитивности и однородности выполняются для $φ$, то $φ$ --- линейный отображение.
+При этом, $φ$ отображает трёхмерное пространство в себя, т.е. $φ$ --- линейный оператор.
+Найдём матрицу данного линейного оператора:
+\startformula
+M = \pmat{φ(e_1); φ(e_2); φ(e_3)} = \pmat{2, 1, 0; -1, -2, 1; 0, 0, -1}
+\stopformula
+Найдём ядро данного линейного оператора:
+\startformula
+XM = 0
+\stopformula
+\startformula \startcases
+2x_1 - x_2 + 0 = 0 \NR
+ x_1 -2x_2 + 0 = 0 \NR
+ 0  +  x_2 - x_3 = 0 \NR
+\stopcases \Rightarrow \quad \startcases
+x_1 = 0 \NR
+x_2 = 0 \NR
+x_3 = 0 \NR
+\stopcases \Rightarrow \quad
+\text{Ker}\,φ = \left{(0,0,0)\right}
+\stopformula
+Зная ядро, найдём ранг и дефект оператора $φ$:
+\startformula \text{def}\,φ = \text{dim}\left(\text{Ker}\,φ\right) = 0 \stopformula
+\startformula \text{rank}\,φ = 3 - \text{def}\,φ = 3 - 0 = 3\stopformula
+
+
+\subject {Задание №2}
+Покажите, что отображение $φ$, состоящее в умножении всех матриц из $M(2, {\Bbb R})$ слева на матрицу $A$,
+будет линейным оператором $M(2, {\Bbb R})$. Найдите матрицу этого линейного оператора в базисе
+$E_1$, $E_2$, $E_3$, $E_4$. Вычислите Ker\,$φ$.
+\startformula
+	E_1 = \pmat{1,0;0,0} \quad E_2=\pmat{0,1;0,0} \quad E_3=\pmat{0,0;1,0} \quad E_4=\pmat{0,0;0,1}
+	\quad A=\pmat{1,2;-3,1}
+\stopformula
+\subsubject {Решение}
+Проверим условие аддитивности:
+\startformula
+φ(X+Y)	= A(X + Y) = AX + AY = φ(X) + φ(Y)
+\stopformula
+Проверим условие однородности:
+\startformula
+φ(αX)	= φ(α X) = AαX = αAX = αφ(X)
+\stopformula
+Поскольку условия аддитивности и однородности выполняются для $φ$, то $φ$ --- линейный отображение.
+При этом, $φ$ отображает четырёхмерное пространство в себя, т.е. $φ$ --- линейный оператор.
+Найдём координаты векторов, которые получаются при приминении 
+Найдём разложение по векторам базиса $E_1$, $E_2$, $E_3$, $E_4$.
+векторов $φ(E_1)$, $φ(E_2)$, $φ(E_3)$, $φ(E_4)$.
+\startformula φ(E_1) = A E_1 = \pmat{1,2;-3,1} \cdot \pmat{1,0;0,0} = \pmat{1,0;-3,0} = E_1 - 3E_3 \stopformula
+\startformula φ(E_2) = A E_2 = \pmat{1,2;-3,1} \cdot \pmat{0,1;0,0} = \pmat{0,1;0,-3} = E_2 - 3E_4 \stopformula
+\startformula φ(E_3) = A E_3 = \pmat{1,2;-3,1} \cdot \pmat{0,0;1,0} = \pmat{2,0;1,0} = 2E_1 + E_3 \stopformula
+\startformula φ(E_4) = A E_4 = \pmat{1,2;-3,1} \cdot \pmat{0,0;0,1} = \pmat{0,2;0,1} = 2E_2 + E_4 \stopformula
+Найдём матрицу данного этого линейного оператора в базисе $E_1$, $E_2$, $E_3$, $E_4$.
+\startformula
+	M_φ = \pmat{φ(E_1); φ(E_2); φ(E_3); φ(E_4)} = \pmat{1,0,-3,0;0,1,0,-3;2,0,1,0;0,2,0,4}
+\stopformula
+Найдём ядро данного линейного оператора:
+\startformula \startcases
+ x_1 + 0 - 3x_3 + 0 = 0 \NR
+ 0 + x_2 + 0 - 3x_4 = 0 \NR
+ 2x_1 + 0 + x_3 + 0 = 0 \NR
+ 0 + 2x_2 + 0 + x_4 = 0 \NR
+\stopcases \Rightarrow \quad \startcases
+x_1 = 0 \NR
+x_2 = 0 \NR
+x_3 = 0 \NR
+x_4 = 0 \NR
+\stopcases \Rightarrow \quad
+\text{Ker}\,φ = \left{(0,0,0,0)\right}
+\stopformula
+
+
+\subject {Задание №3}
+Пусть φ --- отображение пространства ${\Bbb R}_3[x]$ в себя,
+которое многочлену $f(x)$ ставит в соответствие многочлен
+\startformula g(x) = f(x + a) − f(x − b),\ \text{где}\ a = 2,\ b = 1 \stopformula
+Покажите, что $φ$ --- линейный оператор ${\Bbb R}_3[x]$.
+Найдите матрицу этого оператора в базисе $1$, $x$, $x^2$, $x^3$.
+\subsubject {Решение}
+Проверим условие аддитивности:
+\startformula \startalign
+\NC φ(f_1 + f_2)
+	\NC = (f_1+f_2)(x+2) - (f_1+f_2)(x-1) \NR
+\NC	\NC = f_1(x+2) - f_1(x-1) + f_2(x+2) - f_2(x-1) = φ(f_1) + φ(f_2) \NR
+\stopalign \stopformula
+Проверим условие однородности:
+\startformula
+φ(αf)	= αf(x+2) - αf(x-1) = α(f(x+2) - f(x-1)) = αφ(f)
+\stopformula
+Поскольку условия аддитивности и однородности выполняются для $φ$, то $φ$ --- линейный оператор.
+Найдём разложение по векторам базиса $1$, $x$, $x^2$, $x^3$.
+векторов $φ(1)$, $φ(x)$, $φ(x^2)$, $φ(x^3)$.
+\startformula φ(1) = 1 - 1 = 0 \stopformula
+\startformula φ(x) = (x + 2) - (x - 1) = 1 \stopformula
+\startformula φ(x^2) = (x + 2)^2 - (x - 1)^2 = 3+6x \stopformula
+\startformula φ(x^3) = (x + 2)^3 - (x - 1)^3 = 9 + 9x + 9x^2 \stopformula
+Составим матрицу данного этого линейного оператора в базисе $1$, $x$, $x^2$, $x^3$.
+\startformula
+	M_φ = \pmat{φ(1); φ(x); φ(x^2); φ(x^3)} = \pmat{0,0,0,0;1,0,0,0;3,6,0,0;9,9,9,0}
+\stopformula
+
+
+\subject {Задание №4}
+Составьте матрицу линейного оператора $φ$ в базисе $e_1$, $e_2$, $e_3$ действительного линейного пространства $V$,
+если $φ$ векторы
+\startformula x_1 = ae_1 − e_2 + e_3,\ x_2 = e_1 + be_2 − e_3,\ x_3 = e_1 − e_2 − ae_3 \stopformula
+переводит соответственно в векторы
+\startformula 
+	y_1 = e_1 + 2e_2 + be_3,\ y_2 = ae_2 + e_3,\ y_3 = e_1 + be_3,\ \text{где}\ a = 2,\ b = 1
+\stopformula
+Найдите образ вектора $z = e_1 + 2e_2 + 3e_3$ под действием оператора $φ$.
+\subsubject {Решение}
+Найдём координаты векторов $φ(e_1)$, $φ(e_2)$, $φ(e_3)$.
+\startformula \startcases
+φ(x_1) = y_1 \NR
+φ(x_2) = y_2 \NR
+φ(x_3) = y_3 \NR
+\stopcases \Rightarrow \quad \startcases
+φ(2e_1 - e_2 + e_3) = e_1 + 2e_2 + e_3 \NR
+φ(e_1 + e_2 - e_3) = 2e_2 + e_3 \NR
+φ(e_1 - e_2 - 2e_3) = e_1 + e_3 \NR
+\stopcases \Rightarrow \stopformula
+\startformula \startcases
+2φ(e_1) - φ(e_2) + φ(e_3) = e_1 + 2e_2 + e_3 \NR
+φ(e_1) + φ(e_2) - φ(e_3) = 2e_2 + e_3 \NR
+φ(e_1) - φ(e_2) - 2φ(e_3) = e_1 + e_3 \NR
+\stopcases \Rightarrow \quad \startcases
+%[[1/3, 4/3, 2/3 ], [ -4/9, 8/9, 1/9 ], [ -1/9, 2/9, -2/9 ] ]
+φ(e_1) =  \frac13 e_1 + \frac43 e_2 + \frac23 e_3 \NR
+φ(e_2) = -\frac49 e_1 + \frac89 e_2 + \frac19 e_3 \NR
+φ(e_3) = -\frac19 e_1 + \frac29 e_2  -\frac29 e_3 \NR
+\stopcases \stopformula
+Составим матрицу данного этого линейного оператора в базисе $e_1$, $e_2$, $e_3$, $e_4$.
+\startformula
+M_φ = \pmat{φ(e_1); φ(e_2); φ(e_3); φ(e_4)} = \pmat{
+	\frac13, \frac43, \frac23;
+	-\frac49, \frac89, \frac19;
+	-\frac19, \frac29, -\frac29
+}
+\stopformula
+Найдём образ вектора $z = e_1 + 2e_2 + 3e_3$ под действием оператора $φ$.
+\startformula
+φ(z) = z M_φ = \pmat{1,2,3}\cdot
+	\pmat{\frac13, \frac43, \frac23; -\frac49, \frac89, \frac19; -\frac19, \frac29, -\frac29}
+	% [ -8/9, 34/9, 2/9 ]
+	= \pmat{ -\frac89, \frac{34}{9}, \frac29 }
+\stopformula
+
+
+\subject {Задание №5}
+В базисе $e_1$, $e_2$, $e_3$ линейный оператор $φ$ имеет матрицу $B$.
+Как изменится матрица оператора $φ$ при переходе к базису $e′_1$, $e′_2$, $e′_3$?
+\startformula
+	e′_1 = 2e_1 + 1e_2\qquad e′_2 = −e_1 + 2e_2 + 3e_3\qquad e′_3 = e_1 + e_2 + e_3
+\stopformula \startformula
+	B = \pmat{0,1,-3;2,4,1;0,3,-3}
+\stopformula
+\subsubject {Решение}
+Для нахождения матрицы $A$ линейного оператора $φ$ в базисе $e'_1$, $e'_2$, $e'_3$
+воспользуемся тем фактом, что $A=T\cdot B\cdot T^{-1}$, 
+где $T$ --- матрица перехода об базиса $e_1$, $e_2$, $e_3$ к базису $e′_1$, $e′_2$, $e′_3$.
+\startformula
+% [[2,1,0],[-1,2,3],[1,1,1]] * [[0,1,-3],[2,4,1],[0,3,-3]] * [[2,1,0], [-1,2,3], [1,1,1]]^(-1);
+% [ [ 37/2, 15/2, -55/2 ], [ 36, 16, -52 ], [ 45/2, 19/2, -67/2 ] ]
+A = TBT^{-1} = \pmat{2,1,0;-1,2,3;1,1,1} \pmat{0,1,-3;2,4,1;0,3,-3} \pmat{2,1,0;-1,2,3;1,1,1}^{-1}
+	= \pmat{\frac{37}2, \frac{15}2, -\frac{55}2; 36, 16, -52; \frac{45}2, \frac{19}2, -\frac{67}2}
+\stopformula
+
+
+\subject {Задание №6}
+В трехмерном линейном пространстве с базисом $e_1$, $e_2$, $e_3$ заданы векторы
+\startformula
+	u_1 = e_1 + 2e_2 + 3e_3\qquad u_2 = e_1 + 3e_2 + 4e_3\qquad u_3 = e_1 + 3e_2 + 5e_3
+\stopformula \startformula
+	v_1 = 3e_1 + 2e_2 + 2e_3\qquad v_2 = e_1 + e_2 + e_3\qquad v_3 = 4e_1 + 3e_2 + 4e_3
+\stopformula
+Докажите, что векторы $u_1$, $u_2$, $u_3$ и $v_1$, $v_2$, $v_3$ образуют базисы данного пространства.
+В базисе $u_1$, $u_2$, $u_3$ линейный оператор $φ$ задан матрицей $B$.
+Вычислите матрицу оператора $φ$ в базисе $v_1$, $v_2$, $v_3$.
+\startformula
+	B = \pmat{0,1,-3;2,4,1;0,3,-3}
+\stopformula
+\subsubject {Решение}
+Для того, чтобы доказать, что векторы $u_1$, $u_2$, $u_3$ образуют базис трёхмерного линейного пространства,
+проверим, что определитель матрицы, составленной из данных векторов, не равен нулю.
+\startformula
+% [[1,2,3],[1,3,4],[1,3,5]];
+\dmat{u_1; u_2; u_3} = \dmat{1, 2, 3; 1, 3, 4; 1, 3, 5} = 1
+\stopformula
+Для того, чтобы доказать, что векторы $v_1$, $v_2$, $v_3$ образуют базис трёхмерного линейного пространства,
+проверим, что определитель матрицы, составленной из данных векторов, не равен нулю.
+\startformula
+% [[3, 2, 2],[1, 1, 1],[4, 3, 4]];
+\dmat{v_1; v_2; v_3} = \dmat{3, 2, 2; 1, 1, 1; 4, 3, 4} = 1
+\stopformula
+% v := [[3,1,3],[2,1,3],[2,1,4]]; u:=[[1,1,1],[2,3,3],[3,4,5]];
+Найдём матрицу $T$ перехода от базиса $u_1$, $u_2$, $u_3$ к базису $v_1$, $v_2$, $v_3$.
+\startformula
+T = V\cdot U^{-1} = \pmat{3, 1, 3; 2, 1, 3; 2, 1, 4} \pmat{1, 1, 1; 2, 3, 3; 3, 4, 5}^{-1}
+	= \pmat{5,-4,2; 2,-3,2; 1,-4,3}
+\stopformula
+Вычислим матрицу $A$ линейного оператора $φ$ в базисе $v_1$, $v_2$, $v_3$.
+\startformula
+%[[5,-4,2],[2,-3,2],[1,-4,3]]*[[0,1,-3],[2,4,1],[0,3,-3]]*[[5,-4,2],[2,-3,2],[1,-4,3]]^(-1);
+A = T\cdot B\cdot T^{-1} = \pmat{5,-4,2; 2,-3,2; 1,-4,3} \pmat{0,1,-3;2,4,1;0,3,-3}\pmat{5,-4,2; 2,-3,2; 1,-4,3}^{-1}
+	= \pmat{153, -497, 221; 97, -316, 131; 112, -366, 164}
+\stopformula
+
+
+\subject {Задание №7}
+В линейном пространстве ${\Bbb R}^3$ линейный оператор $φ$ задан матрицей $C$.
+Найдите базисы ядра и образа, ранг и дефект оператора $φ$.
+\startformula
+	C = \pmat{4,-8,-4;0,4,2;1,-2,-1}
+\stopformula
+\subsubject {Решение}
+Найдём ядро линейного оператора $φ$.
+\startformula
+xC = 0 \quad \Rightarrow \quad \startcases
+ 4x_1 + 0   +  x_3 = 0 \NR
+-8x_1 + 4x_2 -2x_3 = 0 \NR
+-4x_1 + 2x_2 - x_3 = 0 \NR
+\stopcases \Rightarrow \quad \startcases
+x_2 = 0 \NR
+x_3 = -4x_1 \NR
+\stopcases \stopformula
+\startformula
+\text{Ker}\,φ = \left{(α,0,-4α)\ |\ a\in{\Bbb R}\right}
+\stopformula
+Базис ядра данного линейного оператора:
+\startformula
+	e = \pmat{1, 0, -4}
+\stopformula
+Найдём образ линейного оператора $φ$.
+\startformula
+φ(e_1) = 4e_1 - 8e_2 - 4e_3
+\qquad φ(e_2) = 4e_2 + 2e_3
+\qquad φ(e_3) = e_1 - 2e_2 - e_3
+\stopformula
+\startformula
+\dmat{4,-8,-4;0,4,2;1,-2,-1} = 0 \qquad \qquad \dmat{4,-8;0,4} = 16 \neq 0
+\stopformula
+Базис образа данного линейного оператора:
+\startformula
+	e'_1 = \pmat{4, -8, -4} \qquad \qquad e'_2 = \pmat{0, 4, 2}
+\stopformula
+Найдём ранг и дефект оператора $φ$.
+\startformula \text{rank}\,φ = \text{dim}\,\text{Im}\,φ = 2 \stopformula
+\startformula \text{def}\,φ = \text{dim}\,\text{Ker}\,φ = 1 \stopformula
+
+\subject {Задание №8}
+В некотором базисе пространства ${\Bbb R}^3$ операторы $f$ и $g$ имеют матрицы $B$ и $C$.
+Найдите матрицы операторов $f + g$, $5f$, $fg$. Обратимы ли операторы $f$ и $g$?
+\startformula
+	B = \pmat{0,1,-3;2,4,1;0,3,-3} \qquad \qquad C = \pmat{4,-8,-4;0,4,2;1,-2,-1}
+\stopformula
+\subsubject {Решение}
+Пусть, $M_f = B$, $M_g = C$. Найдём матрицы операторов $f + g$, $5f$, $fg$, восопльзовавшись
+тем фактом, что $M_{f+g} = M_f + M_g,\ M_{5f} = 5 M_f,\ M_{fg} = M_g \cdot M_f$.
+% f := [[0,1,-3],[2,4,1],[0,3,-3]]; g := [[4,-8,-4], [0,4,2], [1,-2,-1]];
+\startformula
+M_{f+g} = M_f + M_g
+	= \pmat{0,1,-3;2,4,1;0,3,-3} + \pmat{4,-8,-4;0,4,2;1,-2,-1}
+	= \pmat{4, -7, -7;2, 8, 3; 1, 1, -4}
+\stopformula
+\startformula
+M_{5f} = 5M_f
+	= 5 \cdot \pmat{0,1,-3;2,4,1;0,3,-3}
+	= \pmat{0, 5, -15; 10, 20, 5; 0, 15, -15} 
+\stopformula
+\startformula
+M_{fg} = M_g \cdot M_f
+	= \pmat{4,-8,-4;0,4,2;1,-2,-1} \cdot \pmat{0,1,-3;2,4,1;0,3,-3}
+	= \pmat{-16, -40, -8; 8, 22, -2; -4, -10, -2}
+\stopformula
+Для того, чтобы определить обратимы ли операторы $f$ и $g$, найдём определители соответствующих им матриц:
+\startformula \left|M_f\right| = \dmat{0,1,-3;2,4,1;0,3,-3} = -12 \stopformula
+\startformula \left|M_g\right| = \dmat{4,-8,-4;0,4,2;1,-2,-1} = 0 \stopformula
+Таким образом, оператор $f$ обратим, а $g$ не обратим.
+
+\stoptext
