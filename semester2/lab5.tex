@@ -1,0 +1,87 @@
+\definecolor[headingcolor][r=1, b=0.4]
+\definecolor[solutionheadercolor][r=0.9, b=0.5]
+\setuphead[subject][color=headingcolor, indentnext=yes]
+\setuphead[subsubject][color=solutionheadercolor, indentnext=yes]
+\setuphead[subject][style={\ss\bfa}, before={\bigskip\bigskip\bigskip\bigskip}, after={}]
+\setuphead[subsubject][style={\ss\bfa}, before={}, after={}]
+
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setupwhitespace[medium]
+\setupindenting[medium, yes]
+
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\,\right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\,\right. }]
+\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(\,}, right={\,\right) }]
+\definemathmatrix[dmatrix][simplecommand=dmat, left={\left|\,}, right={\,\right| }]
+\definemathmatrix[gmatrix][simplecommand=grid, left={\left.\,}, right={\,\right. }]
+\definemathcommand[arctg][nolop]{\mfunction{arctg}}
+
+\setupindenting[medium,yes]
+%\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №5 }
+\centerline { «Строение линейного оператора» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Май 2022 }
+\page
+
+\setuppagenumbering[state=start]
+\setuppagenumber[number=1]
+\setuppagenumbering[location={footer,center}]
+\setupfootertexts[\qquad \date \hfill Страница \pagenumber\ / \lastpagenumber \qquad]
+
+\subject {Задание №1}
+Найдите собственные значения и собственные векторы линейных операторов,
+заданных в некотором базисе линейного пространства над полем ${\Bbb R}$
+и над полем ${\Bbb C}$ следующими матрицами.
+\startformula
+A = \pmat{3, -2; 4, -1} \qquad\qquad B = \pmat{1, -2, -1; -1, 1, 1; 1, 0, -1}
+\stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №2}
+Пусть $f$ --- линейный оператор пространства $V$ над полем $P$. Докажите следующее утверждение.
+Линейная оболочка любой системы собственных векторов оператора $f$ инвариантна относительно $f$.
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №3}
+Какие из матриц линейных операторов в пространстве $V$ над ${\Bbb R}$ можно
+привести к диагональному виду путем перехода к новому базису?
+Найдите этот базис и соответствующую диагональную матрицу.
+\startformula
+A = \pmat{1, -1; -4, 4} \qquad
+B = \pmat{5, -1, -4; -12, 5, 12; 10, -3, -9} \qquad
+C = \pmat{-1, 3, -1; -3, 5, -1; -3, 3, 1}
+\stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №4}
+Найдите жорданову нормальную форму матриц.
+\startformula
+A = \pmat{1, 0; 1, 0} \qquad
+B = \pmat{1, -3, 4; 4, -7, 8; 6, -7, 7} \qquad
+C = \pmat{4, 1, 1, 1; -1, 2, -1, -1; 6, 1, -1, 1; -6, -1, 4, 2}
+\stopformula
+\subsubject {Решение}
+TODO
+
+
+\stoptext
