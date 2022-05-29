@@ -13,11 +13,11 @@
 \setupwhitespace[medium]
 \setupindenting[medium, yes]
 
-\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\,\right. }]
-\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\,\right. }]
-\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(\,}, right={\,\right) }]
-\definemathmatrix[dmatrix][simplecommand=dmat, left={\left|\,}, right={\,\right| }]
-\definemathmatrix[gmatrix][simplecommand=grid, left={\left.\,}, right={\,\right. }]
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{}, right={\right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[}, right={\right. }]
+\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(}, right={\right) }]
+\definemathmatrix[dmatrix][simplecommand=dmat, left={\left|}, right={\right| }]
+\definemathmatrix[gmatrix][simplecommand=grid, left={\left.}, right={\right. }]
 \definemathcommand[arctg][nolop]{\mfunction{arctg}}
 
 \setupindenting[medium,yes]
@@ -50,14 +50,55 @@
 A = \pmat{3, -2; 4, -1} \qquad\qquad B = \pmat{1, -2, -1; -1, 1, 1; 1, 0, -1}
 \stopformula
 \subsubject {Решение}
-TODO
+Для нахождения собственных значений матрицы $A$ решим относительно $λ$ уравнение $|A - λE| = 0$
+\startformula \startalign
+\NC \dmat{3 - λ, -2; 4, -1-λ} \NC = 0 \NR
+\NC λ^2 - 2λ + 5 \NC = 0 \NR
+\stopalign \stopformula
+\startformula
+λ_1 = -2i + 1 \qquad\qquad λ_2 = 2i + 1
+\stopformula
+К сожалению, собственные значения матрицы $A$ не принадлежат полю ${\Bbb R}$, т.е.
+у линейного оператора, заданного матрицей $A$, нет ни собственных значений, ни собственных векторов.
+\par Найдём собственные значений матрицы $B$
+\startformula \startalign
+\NC \dmat{1 - λ, -2, -1; -1, 1 - λ, 1; 1, 0, -1 - λ} \NC = 0 \NR
+\NC -λ^3 + λ^2 + 2*λ \NC = 0 \NR
+\stopalign \stopformula
+\startformula
+λ_1 = 0 \qquad λ_2 = -1 \qquad λ_3 = 2
+\stopformula
+Найдём собственный вектор матрицы $B$ соответствующий собственному значению $λ=0$
+\startformula \startalign
+\NC \pmat{ x_1, x_2, x_3 } \pmat{1 - λ, -2, -1; -1, 1 - λ, 1; 1, 0, -1 - λ} \NC = 0 \NR
+\NC \pmat{ x_1, x_2, x_3 } \NC = \pmat{ c, 2c, c} \NR
+\stopalign \stopformula
+Найдём собственный вектор матрицы $B$ соответствующий собственному значению $λ=-1$
+\startformula \startalign
+\NC \pmat{ x_1, x_2, x_3 } \pmat{1 + 1, -2, -1; -1, 1 + 1, 1; 1, 0, -1 + 1} \NC = 0 \NR
+\NC \pmat{ x_1, x_2, x_3 } \NC = \pmat{ c, c, -c} \NR
+\stopalign \stopformula
+Найдём собственный вектор матрицы $B$ соответствующий собственному значению $λ=2$
+\startformula \startalign
+\NC \pmat{ x_1, x_2, x_3 } \pmat{1 - 2, -2, -1; -1, 1 - 2, 1; 1, 0, -1 - 2} \NC = 0 \NR
+\NC \pmat{ x_1, x_2, x_3 } \NC = \pmat{ c, -2c, -c} \NR
+\stopalign \stopformula
+Таким образом, собственными векторами матрицы $B$ являются вектора вида:
+\startformula
+\pmat{ c, 2c, c } \quad \pmat{ c, c, -c } \quad \pmat{ c, -2c, -c}
+\stopformula
 
 
 \subject {Задание №2}
 Пусть $f$ --- линейный оператор пространства $V$ над полем $P$. Докажите следующее утверждение.
 Линейная оболочка любой системы собственных векторов оператора $f$ инвариантна относительно $f$.
 \subsubject {Решение}
-TODO
+Заметим, что по определению собственного вектора $f$, его линейная оболочка инвариантна относительно $f$.
+При этом, линейная оболочка системы собственных векторов является суммой линейных оболочек этих векторов.
+Согласно лемме 5.7 стр.73, сумма инвариантных относительно $f$ подпространств
+является инвариантной относительно $f$ подпространством $V$.
+Следовательно, линейная оболочка любой системы собственных векторов оператора $f$ инвариантна относительно $f$,
+что и требовалось доказать.
 
 
 \subject {Задание №3}
@@ -70,7 +111,33 @@ B = \pmat{5, -1, -4; -12, 5, 12; 10, -3, -9} \qquad
 C = \pmat{-1, 3, -1; -3, 5, -1; -3, 3, 1}
 \stopformula
 \subsubject {Решение}
-TODO
+Известно, что оператор $f$ $n$-мерного пространства $V$ над полем $P$ диагонализируем тогда и только тогда,
+когда все корни характеристического многочлена оператора $f$ принадлежат полю $P$ и различны.
+
+Найдём собственные значения и вектора матрицы $A$
+\startformula \dmat{1 - λ, -1; -4, 4-λ} = 0 \quad \Rightarrow \quad λ^2 - 5*λ = 0 \stopformula
+\startformula λ_1 = 0 \qquad\qquad λ_2 = 5 \stopformula
+\startformula λ = 0 \Rightarrow \pmat{ x_1, x_2 } \pmat{1 - 0, -1; -4, 4 - 9} = 0
+\Rightarrow \pmat{ x_1, x_2 } = \pmat{ 4c, c} \stopformula
+\startformula λ = 5 \Rightarrow \pmat{ x_1, x_2 } \pmat{1 - 5, -1; -4, 4 - 5} = 0
+\Rightarrow \pmat{ x_1, x_2 } = \pmat{ c, -c} \stopformula
+Таким образом мы выяснили, что линейный оператор, соответствующий матрице $A$, диагонализируем при
+переходе к базису
+\startformula e_1 = \pmat{4, 1} \qquad\qquad e_2 = \pmat{1, -1} \stopformula
+А сама диагональная матрица данного оператора имеет вид
+\startformula \pmat{ 0, 0; 0, 5 } \stopformula
+
+Найдём собственные значения и вектора матрицы $B$
+\startformula \dmat{5-λ, -1, -4; -12, 5-λ, 12; 10, -3, -9-λ} = 0 \quad \Rightarrow \quad -λ^3 + λ^2 + λ - 1 = 0 \stopformula
+\startformula λ_1 = -1 \qquad λ_2 = 1 \qquad λ_3 = -1 \stopformula
+Корни характеристического многочлена оператора $f_B$ совпали, следовательно,
+линейный оператор, соответствующий матрице $A$, не диагонализируем.
+
+Найдём собственные значения и вектора матрицы $C$
+\startformula \dmat{-1-λ, 3, -1; -3, 5-λ, -1; -3, 3, 1-λ} = 0 \quad \Rightarrow \quad -λ^3 + 5*λ^2 - 8*λ + 4 = 0 \stopformula
+\startformula λ_1 = 1 \qquad λ_2 = 2 \qquad λ_3 = 2 \stopformula
+Корни характеристического многочлена оператора $f_C$ совпали, следовательно,
+линейный оператор, соответствующий матрице $C$, не диагонализируем.
 
 
 \subject {Задание №4}
@@ -81,7 +148,44 @@ B = \pmat{1, -3, 4; 4, -7, 8; 6, -7, 7} \qquad
 C = \pmat{4, 1, 1, 1; -1, 2, -1, -1; 6, 1, -1, 1; -6, -1, 4, 2}
 \stopformula
 \subsubject {Решение}
-TODO
+Для нахождения жорданову нормальной формы нам потребуется найти корни характеристического многочлена.
+Составим характеристический многочлен матрицы $A$ и найдем его корни.
+\startformula \dmat{1 - λ, 0; 1, 0 - λ} = 0 \Rightarrow
+λ^2 - λ = 0 \stopformula
+\startformula λ_1 = 1 \qquad\qquad λ_2 = 0 \stopformula
+Характеристический многочлен имеет корни кратности 1, поэтому жорданова нормальная форма состоит
+только из клеток единичного размера и имеет вид:
+\startformula \pmat{1, 0; 0, 0} \stopformula
+
+Составим характеристический многочлен матрицы $B$ и найдем его корни.
+\startformula \dmat{1 - λ, -3, 4; 4- λ, -7, 8; 6, -7, 7 - λ} = 0 \Rightarrow
+λ^3 - λ^2 - 5*λ - 3 = 0 \stopformula
+\startformula λ_1 = 3 \qquad λ_2 = -1 \qquad λ_3 = -1 \stopformula
+Характеристический многочлен имеет корень $λ=-1$ кратности 2.
+Определим число клеток Жордана, соответствующих этому собственному значению.
+Для этого вычислим ранг матрицы $B − λE$.
+\startformula 
+\text{rang}\ \left(\pmat{1, -3, 4; 4, -7, 8; 6, -7, 7} - \pmat{-1,0,0;0,-1,0;0,0,-1} \right) = 2
+\stopformula
+$n - \text{rang}(B - λE) = 3 - 2 = 1$. Таким образом, жорданова нормальная форма содержит только одну клетку,
+соответствующую собственному значению $-1$, и имеет вид:
+\startformula \pmat{3,0,0; 0,-1,1; 0,0,-1} \stopformula
+
+
+Составим характеристический многочлен матрицы $C$ и найдем его корни.
+\startformula \dmat{4 - λ, 1, 1, 1; -1, 2-λ, -1, -1; 6, 1, -1-λ, 1; -6, -1, 4, 2-λ} = 0 \Rightarrow
+λ^4 - 7λ^3 + 9λ^2 + 27λ - 54 = 0 \stopformula
+\startformula λ_1 = -2 \quad λ_2 = 3 \quad λ_3 = 3 \quad λ_4 = 3 \stopformula
+Характеристический многочлен имеет корень $λ=3$ кратности 3.
+Определим число клеток Жордана, соответствующих этому собственному значению.
+Для этого вычислим ранг матрицы $C − λE$.
+\startformula 
+\text{rang}\ \left(\pmat{4, 1, 1, 1; -1, 2, -1, -1; 6, 1, -1, 1; -6, -1, 4, 2} - 3 E_4 \right) = 2
+\stopformula
+$n - \text{rang}(C - λE) = 4 - 2 = 2$. Таким образом, жорданова нормальная форма содержит две клетки,
+соответствующие собственному значению $3$, размеры которых в сумме равны трём.
+Т.е. их размеры равны $1$ и $2$, а сама жорданова нормальная форма матрицы $C$ имеет вид:
+\startformula \pmat{-2,0,0,0; 0,3,1,0; 0,0,3,0; 0,0,0,3} \stopformula
 
 
 \stoptext
