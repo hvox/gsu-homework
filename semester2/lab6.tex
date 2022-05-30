@@ -1,0 +1,236 @@
+\definecolor[headingcolor][r=1, b=0.4]
+\definecolor[solutionheadercolor][r=0.9, b=0.5]
+\setuphead[subject][color=headingcolor, indentnext=yes]
+\setuphead[subsubject][color=solutionheadercolor, indentnext=yes]
+\setuphead[subject][style={\ss\bfa}, before={\bigskip\bigskip\bigskip\bigskip}, after={}]
+\setuphead[subsubject][style={\ss\bfa}, before={}, after={}]
+
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setupwhitespace[medium]
+\setupindenting[medium, yes]
+
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\,\right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\,\right. }]
+\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(\,}, right={\,\right) }]
+\definemathmatrix[dmatrix][simplecommand=dmat, left={\left|\,}, right={\,\right| }]
+\definemathmatrix[gmatrix][simplecommand=grid, left={\left.\,}, right={\,\right. }]
+\definemathcommand[arctg][nolop]{\mfunction{arctg}}
+
+\setupindenting[medium,yes]
+%\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №6 }
+\centerline { «Евклидовы Пространства» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Май 2022 }
+\page
+\setuppagenumber[number=1]
+\setupfootertexts[\qquad \date \hfill Страница \pagenumber\ / \lastpagenumber \qquad]
+
+
+\subject {Задание №1}
+Пусть $u$ и $v$ --- векторы действительного линейного пространства $V$.
+Является ли функция $F(u, v)$ скалярным произведением?
+Если нет, то укажите какие из аксиом скалярного произведения нарушаются.
+\startformula V = C_{[α, β]} \qquad\qquad F(u, v) = \int^β_α x^2 u(x) v(x) dx \stopformula
+\subsubject {Решение}
+Проверим не нарушается ли первое свойство скалярного произведения. Оно утверждает, что $(u, v) = (v, u)$
+\startformula F(u, v) = \int^β_α x^2 u(x) v(x) dx = \int^β_α x^2 v(x) u(x) dx = F(v, u) \stopformula
+Значит, первое свойство скалярного произведения выполняется.
+
+Проверим не нарушается ли второе свойство скалярного произведения. Оно утверждает,
+что $(u + v, w) = (u, w) + (v, w)$
+\startformula \startalign
+\NC F(u + v, w) \NC = \int^β_α x^2 (u + v)(x) w(x) dx \NR
+\NC \NC = \int^β_α \left( x^2 u(x) w(x) + x^2 v(x) w(x) \right) dx \NR
+\NC \NC = \int^β_α x^2 u(x) w(x) dx + \int^β_α x^2 v(x) w(x) dx \NR
+\NC \NC = F(u, w) + F(v, w) \NR
+\stopalign \stopformula
+Значит, второе свойство скалярного произведения выполняется.
+
+Проверим не нарушается ли третье свойство скалярного произведения. Оно утверждает, что $(λu, v) = λ(u, v)$
+\startformula F(λu, v) = \int^β_α x^2 λ u(x) v(x) dx = λ \int^β_α x^2 u(x) v(x) dx = λF(u, v) \stopformula
+Значит, первое свойство скалярного произведения выполняется.
+
+Проверим не нарушается ли четвёртое свойство скалярного произведения. Оно утверждает, что
+$(u, u) > 0$ для любого ненулевого $u$
+\startformula F(u, u) = \int^β_α x^2 u(x) u(x) dx = \int^β_α x^2 u^2(x) dx > 0\ \ \text{для}\ u\ne0 \stopformula
+Значит, четвёртое свойство скалярного произведения выполняется.
+
+Все свойства скалярного произведения выполняются, следовательно, $F(u, v)$ является скалярным произведенрием.
+
+
+\subject {Задание №2}
+В евклидовом пространстве ${\Bbb R}^4$ найдите скалярное произведение векторов $a$, $b$ и угол между ними.
+\startformula a=(1,0,1,2) \qquad\qquad\qquad b=(3,-5,1,0) \stopformula
+\subsubject {Решение}
+\startformula (a, b) = 1\cdot3 + 0 + 1\cdot1 + 0 = 4 \stopformula
+\startformula
+\cos φ = \frac{(a, b)}{|a| \cdot |b|}
+= \frac{4}{\sqrt{1^2 + 0 + 1^2 + 2^2} \cdot \sqrt{3^2 + 5^2 + 1^2 + 0}}
+= \frac{4}{\sqrt{6} \cdot \sqrt{35}}
+\stopformula
+\startformula φ = \text{arccos}\ \frac{4}{\sqrt{210}} \stopformula
+
+
+\subject {Задание №3}
+В евклидовом пространстве $C_{[1,2]}$ найдите норму функции $f$ и скалярное произведение $f$ и $g$.
+\startformula f=\sin{x} \qquad\qquad\qquad g=\cos{x} \stopformula
+\subsubject {Решение}
+\startformula
+||f|| = \int^2_1 f^2(x) dx = \int^2_1 \sin^2{x} dx
+= \left. \frac12 x - \frac14 \sin{\left(2x\right)} \right|^2_1
+= -\frac14\sin4 + \frac14\sin2 + \frac12
+\stopformula
+\startformula
+(f, g) = \int^2_1 f(x) g(x) dx = \int^2_1 \sin{x}\cos{x}\ dx
+= \left. -\frac12\cos^2{x} \right|^2_1
+=  \frac12\cos^2{2} - \frac12\cos^2{1}
+\stopformula
+
+
+\subject {Задание №4}
+Найдите нормированный вектор евклидова пространства ${\Bbb R}^3$, ортогональный векторам $a_1$, $a_2$.
+\startformula a_1 = (1, −1, 0) \qquad\qquad\qquad a_2 = (−2, 1, 2) \stopformula
+\subsubject {Решение}
+\startformula a_1 \times a_2 = (1, -1, 0) \times (-2, 1, 2) = (-2, -2, -1) \stopformula
+\startformula \frac{(-2, -2, -1)}{\left|(-2, -2, -1)\right|} =
+	\left(-\frac23, -\frac23, -\frac13\right) \stopformula
+
+
+\subject {Задание №5}
+Дополните до ортонормированного базиса евклидова пространства ${\Bbb R}^4$ систему векторов $a_1$, $a_2$.
+\startformula a_1 = (1, 1, 1, 2) \qquad\qquad\qquad a_2 = (1, 2, 3, −3) \stopformula
+\subsubject {Решение}
+Следует отметить, что данные нам вектора $a_1$ и $a_2$ не являются нормированными.
+Поэтому, для начала, найдём ортогональную систему $a_1$, $a_2$, $a_3$, $a_4$.
+\startformula \startcases
+x_1 + x_2 + x_3 + 2x_4 \NC = 0 \NR
+x_1 + 2x_2 + 3x_3 -3x_4 \NC = 0 \NR
+\stopcases \Rightarrow \quad \startcases
+x_1 \NC = x_3 - 6x_4 \NR
+x_2 \NC = 5x_4 - 2x_3 \NR
+\stopcases \stopformula
+\startformula a_3 = (1, -2, 1, 0) \stopformula
+\startformula \startcases
+x_1 + x_2 + x_3 + 2x_4 \NC = 0 \NR
+x_1 + 2x_2 + 3x_3 -3x_4 \NC = 0 \NR
+x_1 - 2x_2 + x_3 + 0 \NC = 0 \NR
+\stopcases \Rightarrow \quad \startcases
+x_1 \NC = -\frac{25}{6}x_4 \NR
+x_2 \NC = -\frac{2}{3}x_4 \NR
+x_3 \NC = \frac{17}{6}x_4 \NR
+\stopcases \stopformula
+\startformula a_4 = (25, 4, -17, -6) \stopformula
+Пронормируем ортогональную систему $a_1$, $a_2$, $a_3$, $a_4$.
+\startformula a_1' = \frac{a_1}{|a_1|} = \frac{(1, 1, 1, 2)}{\sqrt{7}}
+	= \left(\frac1{\sqrt7}, \frac1{\sqrt7}, \frac1{\sqrt7}, \frac2{\sqrt7}\right) \stopformula
+\startformula a_2' = \frac{a_2}{|a_2|} = \frac{(1, 2, 3, -3)}{\sqrt{23}}
+	= \left(\frac1{\sqrt{23}}, \frac2{\sqrt{23}}, \frac3{\sqrt{23}}, -\frac3{\sqrt{23}}\right) \stopformula
+\startformula a_3' = \frac{a_3}{|a_3|} = \frac{(1, -2, 1, 0)}{\sqrt{6}}
+	= \left(\frac1{\sqrt6}, -\frac2{\sqrt6}, \frac1{\sqrt6}, 0\right) \stopformula
+\startformula a_4' = \frac{a_4}{|a_4|} = \frac{(25, 4, -17, -6)}{\sqrt{966}}
+	= \left(\frac{25}{\sqrt{966}}, \frac4{\sqrt{966}}, -\frac{17}{\sqrt{966}}, -\frac6{\sqrt{966}}\right) \stopformula
+Таким образом мы получили ортонормированную систему $a_1'$, $a_2'$, $a_3'$, $a_4'$.
+
+
+
+\subject {Задание №6}
+Применяя процесс ортогонализации Грамма-Шмидта, по заданному базису $b_1$, $b_2$, $b_3$
+пространства ${\Bbb R}^3$ постройте ортонормированный базис. Сделайте проверку.
+\startformula b_1 = (2, −1, 3) \qquad b_2 = (3, 2, −5) \qquad b_3 = (1, −1, 1) \stopformula
+\subsubject {Решение}
+\startformula \startalign
+\NC c_1 \NC = b_1 = (2, -1, 3) \NR
+\NC c_2 \NC = b_2 - \frac{(c_1, b_2)}{(c_1, c_1)}c_1 = \left(\frac{32}7, \frac{17}{14}, -\frac{37}{14}\right) \NR
+\NC c_3 \NC = b_2 - \frac{(c_1, b_3)}{(c_1, c_1)}c_1 - \frac{(c_2, b_3)}{(c_2, c_2)}c_2
+	= \left(\frac{13}{411}, -\frac{247}{411}, -\frac{91}{411} \right) \NR
+\stopalign \stopformula
+Пронормируем ортогональную систему $c_1$, $c_2$, $c_3$.
+\startformula \startalign
+\NC a_1 \NC = \frac{c_1}{|c_1|} = \frac{(2, -1, 3)}{\sqrt{14}}
+	= \left(\frac2{\sqrt{14}}, -\frac1{\sqrt{14}}, \frac3{\sqrt{14}}\right) \NR
+\NC a_2 \NC = \frac{c_2}{|c_2|} = \frac{\left(\frac{32}7, \frac{17}{14}, -\frac{37}{14}\right)}{\sqrt{\frac{411}{14}}}
+	= \left(\frac{64}{\sqrt{5754}}, \frac{17}{\sqrt{5754}} -\frac{37}{\sqrt{5754}} \right) \NR
+\NC a_3 \NC = \frac{c_3}{|c_3|}
+	= \frac{\left(\frac{13}{411}, -\frac{247}{411}, -\frac{91}{411} \right)}{\frac{13}{\sqrt{411}}}
+	= \left(\frac1{\sqrt{411}}, -\frac{19}{\sqrt{411}}, -\frac7{\sqrt{411}}\right) \NR
+\stopalign \stopformula
+Сделаем проверку того, что система векторо $a_1$, $a_2$, $a_3$ действительно является ортогональной.
+\startformula \startalign
+\NC a_1 \cdot a_2 \NC = \frac{2\cdot64 -17 -3\cdot37}{\sqrt{14\cdot5754}} = 0\NR
+\NC a_2 \cdot a_3 \NC = \frac{64 - 19\cdot17 + 37\cdot7}{\sqrt{5754\cdot411}}= 0 \NR
+\NC a_3 \cdot a_1 \NC = \frac{2 + 19 - 3 \cdot 7}{\sqrt{14\cdot411}} = 0 \NR
+\stopalign \stopformula
+Сделаем проверку того, что система векторо $a_1$, $a_2$, $a_3$ действительно является ортонормированной.
+\startformula \startalign
+\NC a_1 \cdot a_1 \NC = \frac{2^2 + 1 + 3^2}{14} = \frac{4 + 1 + 9}{14} = \frac{14}{14} = 1 \NR
+\NC a_2 \cdot a_2 \NC = \frac{64^2 + 17^2 + 37^2}{5754} = \frac{4096 + 289 + 1369}{5754} = \frac{5754}{5754} = 1 \NR
+\NC a_3 \cdot a_3 \NC = \frac{1 + 19^2 + 7^2}{411} = \frac{1 + 361 + 49}{411} = \frac{411}{411} = 1 \NR
+\stopalign \stopformula
+
+
+\subject {Задание №7}
+Применяя процесс ортогонализации Грамма-Шмидта, постройте ортонормированный базис
+линейной оболочки системы векторов $a_1$, $a_2$, $a_3$ евклидова пространства ${\Bbb R}^4$.
+\startformula a_1 = (1, 1, -1, -2) \qquad a_2 = (3, 0, -1, 2) \qquad a_3 = (2, -1, 0, 4) \stopformula
+\subsubject {Решение}
+Нетрудно заметить, что $a_3 = a_2 - a_1$, т.е. базис линейной оболочки $a_1$, $a_2$, $a_3$ будет состоять
+только из двух векторов. Найдём ортогональную систему $b_1$, $b_2$.
+\startformula \startalign
+\NC b_1 \NC = a_1 = (1, 1, -1, -2) \NR
+\NC b_2 \NC = a_2 - \frac{(b_1, a_2)}{(b_1, b_1)}b_1 = (3, 0, -1, 2) - 0 = (3, 0, -1, 2) \NR
+\stopalign \stopformula
+Пронормируем ортогональную систему $b_1$, $b_2$.
+\startformula \startalign
+\NC c_1 \NC = \frac{b_1}{|b_1|} = \frac{(1, 1, -1, -2)}{\sqrt{7}}
+	= \left(\frac1{\sqrt7}, \frac1{\sqrt7}, -\frac1{\sqrt7}, -\frac2{\sqrt7}\right) \NR
+\NC c_2 \NC = \frac{b_2}{|b_2|} = \frac{(3, 0, -1, 2)}{\sqrt{14}}
+	= \left(\frac3{\sqrt{14}}, 0, -\frac1{\sqrt{14}}, \frac2{\sqrt{14}}\right) \NR
+\stopalign \stopformula
+Таким образом, система векторов $c_1$, $c_2$ является ортонормированным базисом
+линейной оболочки системы векторов $a_1$, $a_2$, $a_3$ евклидова пространства ${\Bbb R}^4$.
+
+
+\subject {Задание №8}
+Скалярное произведение в ${\Bbb R}[x]$ определено равенством
+$(f(x), g(x))$ $=$ \break $\int^1_0 f(x)g(x)dx$. Применяя процесс ортогонализации Грамма-Шмидта,
+по базису $f_1$, $f_2$ пространства ${\Bbb R}[x]$ постройте ортонормированный базис.
+\startformula f_1(x) = 2x − 1 \qquad\qquad\qquad f_2(x) = x \stopformula
+\subsubject {Решение}
+\startformula g_1 = f_1 = 2x - 1 \stopformula
+\startformula \startalign
+\NC g_2 \NC = f_2 - \frac{(g_1, f_2)}{(g_1, g_1)}g_1 = 2x-1 - \frac{\int^1_0(2x-1)xdx}{\int^1_0(2x-1)^2dx}\ (2x-1) = \NR
+\NC \NC = x -  \frac{1/6}{1/3}(2x-1) = \frac12 \NR
+\stopalign \stopformula
+Пронормируем ортогональную систему $g_1$, $g_2$.
+\startformula \startalign
+\NC h_1 \NC = \frac{g_1}{|g_1|} = \frac{2x-1}{\sqrt{1/3}} = 2\sqrt3x - \sqrt3 \NR
+\NC h_2 \NC = \frac{g_2}{|g_2|} = \frac{1/2}{1/2} = 1 \NR
+\stopalign \stopformula
+Итого, $h_1$, $h_2$ --- искомый ортонормированный базис.
+
+
+\subject {Задание №9}
+Докажите, что евклидовы пространства $E$ и $E'$ евклидово изоморфны.
+\startformula E = {\Bbb R}^2,\quad (a, b) = 2a_1 b_1 + 3 a_2 b_2,\ a, b \in E \stopformula
+\startformula E' = {\Bbb R}^2,\quad (x, y) = x_1 y_1 + x_2 y_2,\ x, y \in E' \stopformula
+\subsubject {Доказательство}
+Заметим, что размерности $E$ и $E'$ совпадают.
+Следовательно, евклидовы пространства $E$ и $E'$ евклидово изоморфны по теореме 6.6
+
+
+
+\stoptext
