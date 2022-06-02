@@ -42,19 +42,39 @@
 \subject {Задание №1}
 Докажите следующее свойство сопряженных линейных операторов евклидова пространства.
 \startformula (f + g)^∗ = f^∗ + g^∗ \stopformula
-\subsubject {Решение}
-TODO
-
+\subsubject {Доказательство}
+Известно, что матрица оператора $f^∗$ в ортонормированном базисе будет транспонированной
+по отношению к матрице оператора $f$ в этом базисе. Поэтому уравнение $(f + g)^∗ = f^∗ + g^∗$
+можно записать в матричном виде как $(M_f + M_g)^T = M_f^T + M_g^T$, где
+$M_f$ --- матрица линейного оператора $f$ в некотором ортонормированном базисе,
+а $M_g$ --- матрица линейного оператора $g$ в некотором ортонормированном базисе.
+\par
+Свойством операции транспонирования является то, что $(A + B)^T = A^T + B^T$.
+В частности, верно равенство $(M_f + M_g)^T = M_f^T + M_g^T$.
+Следовательно, $(f + g)^∗ = f^∗ + g^∗$, что и требовалось доказать.
+	
 
 \subject {Задание №2}
 В пространстве ${\Bbb R}^2[x]$ задано скалярное произведение:
-$(f, g) = a_0 b_0 + a_1 b_1 + a_2 b_2$, где $f (x) = a_0 + a_a1 x + a_2 x_2$,
-$g(x) = b_0 + b_1 x + b_2 x_2$. Пусть $F$ — такой линейный оператор
+$(f, g) = a_0 b_0 + a_1 b_1 + a_2 b_2$, где $f (x) = a_0 + a_1 x + a_2 x^2$,
+$g(x) = b_0 + b_1 x + b_2 x^2$. Пусть $F$ — такой линейный оператор
 пространства ${\Bbb R}^2[x]$, что $F (f (x))$ = $f (x − a) − f (x − b)$.
 Найдите матрицу сопряженного оператора $F^∗$ в базисе $1$, $x$, $x_2$.
 \startformula a = 2 \qquad\qquad b = 1 \stopformula
 \subsubject {Решение}
-TODO
+Найдём матрицу $M_F$ линейного оператора $F$.
+\startformula F(e_1) = F(1) = 1 - 1 = 0 \stopformula
+\startformula F(e_2) = F(x) = (x - 2) - (x - 1) = -1 \stopformula
+\startformula F(e_3) = F(x^2) = (x - 2)^2 - (x - 1)^2 = 3-2x \stopformula
+\startformula M_F = \pmat{
+0, -1,  3;
+0,  0, -2;
+0,  0,  0
+} \stopformula
+Нетрудно заметить, что базис $1$, $x$, $x_2$ является ортонормированным.
+Следовательно матрица сопряженного оператора $F^*$ является транспонированной матрицей
+оператора $F$ в этом базисе:
+\startformula M_{F^*} = M_F^T = \pmat{0, 0, 0; -1, 0, 0; 3, -2, 0} \stopformula
 
 
 \subject {Задание №3}
@@ -63,7 +83,23 @@ $A$ — матрица линейного оператора $f$ в базисе
 Найдите матрицу оператора $f^∗$ в базисе $e′_1$, $e′_2$.
 \startformula A = \pmat{1,-1; 2,2} \stopformula
 \subsubject {Решение}
-TODO
+Запишем матрицу перехода от базиса $e_1$, $e_2$ к базису $e`_1$, $e`_2$
+\startformula T = \pmat{1,0;1,1} \stopformula
+Тогда матрицу $B$ линейного оператора $f$ в базисе $e_1$, $e_2$ можно найти по формуле
+$B = T^{-1}AT$. Известно, что матрица $C$ оператора $f^∗$ в ортонормированном базисе будет транспонированной
+по отношению к матрице $B$ оператора $f$ в этом базисе. Т.е. $C = B^T$.
+\startformula \startalign
+\NC C \NC = B^T = \left( T^{-1} A T \right)^T = \NR
+\NC\NC = \left(\pmat{1,0;1,1}^{-1} \pmat{1,-1;2,2} \pmat{1,0;1,1} \right)^T = \NR
+\NC\NC = \left(\pmat{1,0;-1,1} \pmat{1,-1;2,2} \pmat{1,0;1,1} \right)^T = \NR
+\NC\NC = \pmat{0, -1; 4, 3}^T \NR
+\NC\NC = \pmat{0, 4; -1, 3} \NR
+\stopalign \stopformula
+Найдём матрицу $D$ оператора $f^*$ в базисе $e`_1$, $e`_2$
+зная матрицу $C$ оператора $f^*$ в базисе $e_1$, $e_2$.
+\startformula
+D = TCT^{-1} = \pmat{1,0;1,1}\pmat{0,4;-1,3}\pmat{1,0;-1,1} = \pmat{-4,4;-8,7}
+\stopformula
 
 
 \subject {Задание №4}
@@ -73,15 +109,26 @@ $e_1$, $e_2$, $e_3$, если $f$ переводит векторы $a_1$, $a_2$
 \startformula a_1 = (2,3,5) \qquad a_2 = (0,1,2) \qquad a_3 = (1,0,0) \stopformula
 \startformula b_1 = (1,1,1) \qquad b_2 = (1,1,-1) \qquad b_3 = (2,1,2) \stopformula
 \subsubject {Решение}
-TODO
+\startformula f(a_1) = b_1 \qquad f(a_2) = b_2 \qquad f(a_3) = b_3 \stopformula
+\startformula M a_1 = b_1 \qquad M a_2 = b_2 \qquad M a_3 = b_3 \stopformula
+\startformula M A = B \qquad \Rightarrow \qquad M = B A^{-1} \stopformula
+\startformula \startalign
+\NC M_f \NC = \pmat{1,1,2;1,1,1;1,-1,2}\pmat{2,0,1;3,1,0;5,2,0}^{-1} \NR
+\NC\NC = \pmat{1,1,2;1,1,1;1,-1,2}\pmat{0,2,-1;0,-5,3;1,-4,2} \NR
+\NC\NC = \pmat{2,-11,6;1,-7,4;2,-1,0} \NR
+\stopalign \stopformula
 
 
 \subject {Задание №5}
 Определите, является ли ортогональным линейный оператор $φ$ евклидова пространства ${\Bbb R}^n$,
-действующий на векторы ортонормированного базиса $e_1$, $e_2$ ... $e_n$ по следующим формулам.
+действующий на векторы ортонормированного базиса $e_1$, $e_2$, $e_3$, ... $e_n$ по следующим формулам.
 \startformula n = 2 \qquad φ(e_1) = e_1 + e_2 \qquad φ(e_2) = e_1 - e_2 \stopformula
 \subsubject {Решение}
-TODO
+Данный оператор не является ортгональным, например для $x=e_1$, $y=e_1$
+скалярное произведение не сохраняется.
+\startformula
+(x, y) = (e_1, e_1) = 1\cdot1 \ne (φ(e_1), φ(e_1)) = (e_1 + e_2, e_1 + e_2) = 1\cdot1 + 1\cdot1 = 2
+\stopformula
 
 
 \subject {Задание №6}
@@ -93,30 +140,111 @@ TODO
 	\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}, 0
 } \stopformula
 \subsubject {Решение}
-TODO
+Данный оператор не является ортгональным, например для $x=(0,1,0)$, $y=(0,1,0)$
+скалярное произведение не сохраняется.
+\startformula (x, y) = \left((0,1,0), (0,1,0)\right) = 0\cdot0 + 1\cdot1 + 0\cdot0 = 1 \stopformula
+\startformula \startalign
+\NC (φ(x), φ(y)) \NC = (φ((0, 1, 0)), φ((0, 1, 0))) = \left(B\cdot\pmat{0;1;0}, B\cdot\pmat{0;1;0}\right) \NR
+\NC\NC = \left( \frac13, \frac12, - \frac{\sqrt{2}}{2}\right)
+	\cdot \left( \frac13, \frac12, - \frac{\sqrt{2}}{2}\right) \NR
+\NC\NC =\frac19 + \frac14 + \frac24 = \frac{31}{36} \ne 1 = (x, y)
+\stopalign \stopformula
+
 
 
 \subject {Задание №7}
 Докажите следующее свойство самосопряженных линейных операторов евклидова пространства:
 Для любого линейного оператора $f$ евклидова пространства операторы $ff^∗$ и $f^∗f$
 являются самосопряженными.
-\subsubject {Решение}
-TODO
+\subsubject {Доказательство}
+Докажем, что оператор $ff^*$ являются самосопряженным, т.е.
+\startformula \left(ff^*\right)^* = ff^* \stopformula
+Запишем это уравнение в матричном виде полагая, что $M_f$ --- матрица линейного оператора $f$
+в некотором ортонормированном базисе.
+\startformula \left( M_f \cdot M^T_f \thinspace \right)^T = M_f \cdot M^T_f \stopformula
+Докажем вышеуказанное уравнение используя свойство транспонирования матриц $(AB)^T = B^T A^T$
+\startformula
+\left( M_f \cdot M^T_f \thinspace \right)^T = \left(M^T_f\thinspace \right)^T \cdot M^T_f = M_f \cdot M^T_f
+\stopformula
+Таким образом, $ \left( M_f  \cdot M^T_f \thinspace \right)^T = M_f \thinspace\cdot M^T_f $\thinspace, т.е.
+$ \left(ff^*\right)^* = ff^* $, что и требовалось доказать.
+\par Аналогично докажем, что $f^∗f$ является самосопряженным оператором, т.е.
+$ \left(f^*f\right)^* = f^* f $
+\startformula
+\left( M^T_f \cdot M_f \thinspace \right)^T = M^T_f \cdot \left(M^T_f\thinspace \right)^T = M^T_f \cdot M_f
+\ \Rightarrow\ \left( M^T_f \cdot M_f \thinspace \right)^T = M^T_f \cdot M_f
+\ \Rightarrow\ \left(f^*f\right)^* = f^* f
+\stopformula
+
 
 
 \subject {Задание №8}
 Найдите базис ортогонального дополнения линейной оболочки системы векторов $M$ из ${\Bbb R}^4$.
 \startformula M = \left{(1, 1, 1, 1),\ (1, 2, 2, −1),\ (1, 0, 0, 3)\right}. \stopformula
 \subsubject {Решение}
-TODO
+Вектора ортогонального дополнения линейной оболочки векторов ортогональны векторам данной линейной оболочки. 
+Eсли $x \in W^{⊥}$, то $(1,1,1,1) \cdot x = 0$, $(1,2,2,-1) \cdot x = 0$,\ \ $(1,0,0,3) \cdot x = 0 $
+\startformula
+\pmat{1,1,1,1; 1,2,2,-1; 1,0,0,3}\pmat{x_1;x_2;x_3;x_4} = \pmat{0;0;0}
+\quad\Rightarrow\quad
+\lmat{x_1 + x_2 + x_3 + x_4 = 0; x_1 + 2x_2 + 2x_3 - x_4 = 0; x_1 + 3x_4 = 0}
+\quad\Rightarrow\quad \stopformula \startformula \quad\Rightarrow\quad
+\lmat{x_1 = -3a; x_2 = 2a - b; x_3 = b; x_4 = a}
+\quad\Rightarrow\quad
+\startgmatrix 
+\NC e_1 = (-3, 2, 0, 1) \NR
+\NC e_2 = (0, -1, 1, 0) \NR
+\stopgmatrix
+\stopformula
+Таким оболочки вектора $(-3, 2, 0, 1)$ и $(0, -1, 1, 0)$ являются базисом
+ортогонального дополнения линейной оболочки системы векторов $M$ из ${\Bbb R}^4$.
 
 
 \subject {Задание №9}
-Для данной матрицы $C$ найдите такую ортогональную матрицу $T$,
+Для данной матрицы $C$ оператора $f$ найдите такую ортогональную матрицу $T$,
 что $TCT^{−1}$ --- диагональная матрица. Сделайте проверку.
 \startformula C = \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \stopformula
 \subsubject {Решение}
-TODO
+Данная матрица обладает собственными значениями $27$, $9$, $9$ и собственными векторами
+$e'_1 = \left(\frac23, -\frac23, \frac13\right)$,
+$e'_2 = \left(\frac{\sqrt5}{5}, 0, -\frac{2\sqrt5}{5} \right)$,
+$e'_3 = \left(\frac{4\sqrt5}{15}, \frac{\sqrt5}{3}, \frac{2\sqrt5}{15} \right)$, которые образуют
+ортонормированный базис, в котором матрица оператора $f$ является диагональной
+матрицей состоящей из собственных значений матрицы $C$.
+\par Пусть $T$ --- матрица перехода к $e'_1$, $e'_2$, $e'_3$,
+тогда $TCT^{-1}$ будет диагональной матрицей состоящей из собственных значений матрицы $C$.
+Матрица $T$ является ортогональной, т.к. она является матрицей перехода от ортонормированного базиса $e_1$, $e_2$, $e_3$
+к ортонормированному базису $e'_1$, $e'_2$, $e'_3$.
+\startformula
+T = \pmat{  \frac23, -\frac23, \frac13;
+	\frac{\sqrt5}{5}, 0, -\frac{2\sqrt5}{5};
+	\frac{4\sqrt5}{15}, \frac{\sqrt5}{3}, \frac{2\sqrt5}{15} }
+\stopformula\startformula\startalign
+\NC TCT^{-1} \NC = 
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}
+\cdot \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \cdot
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}^{-1}
+\NR \NC \NC =
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}
+\cdot \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \cdot
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}^{T}
+\NR \NC \NC =
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}
+\cdot \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \cdot
+\pmat{   \frac23,  \frac{\sqrt5}{5},  \frac{4\sqrt5}{15};    
+	-\frac23,   0,                \frac{\sqrt5}{3};      
+	 \frac13, -\frac{2\sqrt5}{5}, \frac{2\sqrt5}{15} }
+\NR \NC \NC =
+\pmat{27,0,0;0,9,0;0,0,9}
+\stopalign\stopformula
+Сделаем проверку, что $TCT^{-1}$ диагональна, а $T$ ортогональна.
+\startformula TCT^{-1} = \pmat{27,0,0;0,9,0;0,0,9} \text{ --- очевидно диагональна матрица} \stopformula
+Проверим, что $T$ является ортогональной матрицей:
+\startformula T\cdot T^{T} =
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}} \cdot
+\pmat{\frac23,\frac{\sqrt5}{5},\frac{4\sqrt5}{15};-\frac23,0,\frac{\sqrt5}{3};\frac13,-\frac{2\sqrt5}{5},\frac{2\sqrt5}{15}}
+= \pmat{1,0,0;0,1,0;0,0,1} = E
+\stopformula
 
 
 \subject {Задание №10}
@@ -126,7 +254,13 @@ TODO
 Найдите матрицу оператора $φ$ в базисе $e′_1$, $e′_2$.
 \startformula D = \pmat{4, -2; -2, 1} \stopformula
 \subsubject {Решение}
-TODO
+Данная матрица обладает собственными значениями $5$, $0$ и собственными векторами
+$e'_1 = \left( \frac{2\sqrt{5}}{5}, -\frac{\sqrt{5}}{5} \right)$,
+$e'_2 = \left( \frac{\sqrt{5}}{5},  \frac{2\sqrt{5}}{5} \right)$, которые образуют
+ортонормированный базис, в котором матрица данного оператора является диагональной
+матрицей состоящей из собственных значений матрицы $D$.
+Т.е. матрицей оператора $φ$ в базисе $e'_1, e'_2$ является матрица
+\startformula \pmat{5,0;0,0} \stopformula
 
 
 \stoptext
