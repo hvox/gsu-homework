@@ -1,0 +1,132 @@
+\definecolor[headingcolor][g=0.6, b=0.4]
+\definecolor[solutionheadercolor][g=0.5, b=0.5]
+\setuphead[subject][color=headingcolor, indentnext=yes]
+\setuphead[subsubject][color=solutionheadercolor, indentnext=yes]
+\setuphead[subject][style={\ss\bfa}, before={\bigskip\bigskip\bigskip\bigskip}, after={}]
+\setuphead[subsubject][style={\ss\bfa}, before={}, after={}]
+
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setupwhitespace[medium]
+\setupindenting[medium, yes]
+
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\,\right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\,\right. }]
+\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(\,}, right={\,\right) }]
+\definemathmatrix[dmatrix][simplecommand=dmat, left={\left|\,}, right={\,\right| }]
+\definemathmatrix[gmatrix][simplecommand=grid, left={\left.\,}, right={\,\right. }]
+\definemathcommand[arctg][nolop]{\mfunction{arctg}}
+
+\setupindenting[medium,yes]
+%\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №7 }
+\centerline { «Линейные операторы в евклидовом пространстве» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Июнь 2022 }
+\page
+\setuppagenumber[number=1]
+\setupfootertexts[\qquad \date \hfill Страница \pagenumber\ / \lastpagenumber \qquad]
+
+\subject {Задание №1}
+Докажите следующее свойство сопряженных линейных операторов евклидова пространства.
+\startformula (f + g)^∗ = f^∗ + g^∗ \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №2}
+В пространстве ${\Bbb R}^2[x]$ задано скалярное произведение:
+$(f, g) = a_0 b_0 + a_1 b_1 + a_2 b_2$, где $f (x) = a_0 + a_a1 x + a_2 x_2$,
+$g(x) = b_0 + b_1 x + b_2 x_2$. Пусть $F$ — такой линейный оператор
+пространства ${\Bbb R}^2[x]$, что $F (f (x))$ = $f (x − a) − f (x − b)$.
+Найдите матрицу сопряженного оператора $F^∗$ в базисе $1$, $x$, $x_2$.
+\startformula a = 2 \qquad\qquad b = 1 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №3}
+Пусть $e_1$, $e_2$ --- ортонормированный базис евклидова пространства $V$,
+$A$ — матрица линейного оператора $f$ в базисе $e′_1 = e_1$, $e′_2 = e_1 + e_2$.
+Найдите матрицу оператора $f^∗$ в базисе $e′_1$, $e′_2$.
+\startformula A = \pmat{1,-1; 2,2} \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №4}
+Найдите матрицу линейного оператора $f$ в ортонормированном базисе
+$e_1$, $e_2$, $e_3$, если $f$ переводит векторы $a_1$, $a_2$, $a_3$ в векторы $b_1$, $b_2$, $b_3$ соответственно.
+Координаты всех векторов заданы в базисе $e_1$, $e_2$, $e_3$.
+\startformula a_1 = (2,3,5) \qquad a_2 = (0,1,2) \qquad a_3 = (1,0,0) \stopformula
+\startformula b_1 = (1,1,1) \qquad b_2 = (1,1,-1) \qquad b_3 = (2,1,2) \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №5}
+Определите, является ли ортогональным линейный оператор $φ$ евклидова пространства ${\Bbb R}^n$,
+действующий на векторы ортонормированного базиса $e_1$, $e_2$ ... $e_n$ по следующим формулам.
+\startformula n = 2 \qquad φ(e_1) = e_1 + e_2 \qquad φ(e_2) = e_1 - e_2 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №6}
+В ортонормированном базисе евклидова пространства ${\Bbb R}^3$ линейный оператор задан матрицей $B$.
+Будет ли этот оператор ортогональным?
+\startformula B = \pmat{
+	\frac12, \frac13, -\frac{\sqrt{2}}{2};
+	\frac12, \frac12, \frac{\sqrt{2}}{2};
+	\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}, 0
+} \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №7}
+Докажите следующее свойство самосопряженных линейных операторов евклидова пространства:
+Для любого линейного оператора $f$ евклидова пространства операторы $ff^∗$ и $f^∗f$
+являются самосопряженными.
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №8}
+Найдите базис ортогонального дополнения линейной оболочки системы векторов $M$ из ${\Bbb R}^4$.
+\startformula M = \left{(1, 1, 1, 1),\ (1, 2, 2, −1),\ (1, 0, 0, 3)\right}. \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №9}
+Для данной матрицы $C$ найдите такую ортогональную матрицу $T$,
+что $TCT^{−1}$ --- диагональная матрица. Сделайте проверку.
+\startformula C = \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №10}
+Найдите собственные значения и ортонормированный базис $e′_1$, $e′_2$
+из собственных векторов самосопряженного линейного оператора $φ$,
+заданного в некотором ортонормированном базисе $e_1$, $e_2$ матрицей $D$.
+Найдите матрицу оператора $φ$ в базисе $e′_1$, $e′_2$.
+\startformula D = \pmat{4, -2; -2, 1} \stopformula
+\subsubject {Решение}
+TODO
+
+
+\stoptext
