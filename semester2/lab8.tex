@@ -44,7 +44,19 @@
 \startformula F_1(x, y, z) = x^2 - 2xy + 2z^2 + 4yz + 5z^2 \stopformula
 \startformula F_2(x_1, x_2, x_3, x_4) = x_1 x_2 + x_1 x_3 + x_1 x_4 + x_2 x_3 + x_2 x_4 \stopformula
 \subsubject {Решение}
-TODO
+\startformula
+M_{F_1} = \pmat{1, -1, 0; -1, 2, 2; 0, 2, 5} \qquad \qquad
+M_{F_2} = \pmat{
+	0, \frac12, \frac12, \frac12;
+	\frac12, 0, \frac12, \frac12;
+	\frac12, \frac12, 0, 0;
+	\frac12, \frac12, 0, 0 }
+\stopformula
+\startformula \text{rang}\ F_1 = \text{rang}\ M_{F_1} = \text{rang}\ \pmat{1, -1, 0; -1, 2, 2; 0, 2, 5} = 3 \stopformula
+\startformula
+\text{rang}\ F_2 = \text{rang}\ M_{F_2} = \text{rang}\
+\pmat{ 0, \frac12, \frac12, \frac12; \frac12, 0, \frac12, \frac12; \frac12, \frac12, 0, 0; \frac12, \frac12, 0, 0 } = 3
+\stopformula
 
 
 \subject {Задание №2}
