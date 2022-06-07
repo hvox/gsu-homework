@@ -1,0 +1,111 @@
+\definecolor[headingcolor][r=1, b=0.4]
+\definecolor[solutionheadercolor][r=0.9, g=0.5]
+\setuphead[subject][color=headingcolor, indentnext=yes]
+\setuphead[subsubject][color=solutionheadercolor, indentnext=yes]
+\setuphead[subject][style={\ss\bfa}, before={\bigskip\bigskip\bigskip\bigskip}, after={}]
+\setuphead[subsubject][style={\ss\bfa}, before={}, after={}]
+
+\setuppapersize[A4]
+\setuplayout[backspace=2cm, topspace=1cm, header=1cm, bottomspace=1cm,
+    footer=1cm, width=middle, height=middle]
+\setupbodyfont[libertinus, 14pt]
+\mainlanguage[ru]
+\setupwhitespace[medium]
+\setupindenting[medium, yes]
+
+\definemathmatrix[lmatrix][simplecommand=lmat, left={\left\{\,}, right={\,\right. }]
+\definemathmatrix[umatrix][simplecommand=umat, left={\left[\,}, right={\,\right. }]
+\definemathmatrix[pmatrix][simplecommand=pmat, left={\left(\,}, right={\,\right) }]
+\definemathmatrix[dmatrix][simplecommand=dmat, left={\left|\,}, right={\,\right| }]
+\definemathmatrix[gmatrix][simplecommand=grid, left={\left.\,}, right={\,\right. }]
+\definemathcommand[arctg][nolop]{\mfunction{arctg}}
+
+\setupindenting[medium,yes]
+%\setupformulas[align=right]
+\starttext
+\setuppagenumbering[state=stop]
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №8 }
+\centerline { «Квадратичные формы» }
+\vfill \vfill
+{\leftskip 0.55\hsize \noindent
+  Выполнил:\\Хамков Владислав (ПИ-11)\\
+  Проверил:\\Васильев Александр Федорович}
+\vfill
+\centerline { Июнь 2022 }
+\page
+\setuppagenumber[number=1]
+\setupfootertexts[\qquad \date \hfill Страница \pagenumber\ / \lastpagenumber \qquad]
+
+\subject {Задание №1}
+Запишите матрицы квадратичных форм $F_1$, $F_2$. Вычислите ранги этих квадратичных форм.
+\startformula F_1(x, y, z) = x^2 - 2xy + 2z^2 + 4yz + 5z^2 \stopformula
+\startformula F_2(x_1, x_2, x_3, x_4) = x_1 x_2 + x_1 x_3 + x_1 x_4 + x_2 x_3 + x_2 x_4 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №2}
+Методом Лагранжа приведите квадратичные формы $G_1$ и $G_2$ к каноническому виду.
+Укажите невырожденное линейное преобразование переменных, приводящее к этому виду. Сделайте проверку.
+\startformula G_1 = x_1^2 − 2x_2^2 + x_3^2 + 2x_1 x_2 + 4x_1 x_3 + 2x_2 x_3 \stopformula
+\startformula G_2 = 2x_1 x_3 − 4x_2 x_3 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №3}
+Определите индекс инерции квадратичных форм $F_1$, $G_1$, $F_2$, $G_2$.
+\startformula F_1(x, y, z) = x^2 - 2xy + 2z^2 + 4yz + 5z^2 \stopformula
+\startformula G_1 = x_1^2 − 2x_2^2 + x_3^2 + 2x_1 x_2 + 4x_1 x_3 + 2x_2 x_3 \stopformula
+\startformula F_2(x_1, x_2, x_3, x_4) = x_1 x_2 + x_1 x_3 + x_1 x_4 + x_2 x_3 + x_2 x_4 \stopformula
+\startformula G_2 = 2x_1 x_3 − 4x_2 x_3 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №4}
+Найдите ортогональную матрицу $T$ такую, что $T AT^{−1}$ --- диагональная матрица,
+где $A$ --- матрица квадратичной формы $F$. Сделайте проверку.
+\startformula F = 17x_1^2 + 17x_2^2 + 11x_3^2 − 16x_1 x_2 + 8x_1 x_3 − 8x_2 x_3 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №5}
+Найдите ортогональное преобразование переменных,
+приводящее квадратичную форму $F(x_1, x_2, x_3)$ к каноническому виду.
+\startformula F = 8x_1^2 − 7x_2^2 + 8x_3^2 + 8x_1 x_2 − 2x_1 x_3 + 8x_2 x_3 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №6}
+Найдите нормальный вид над полем ${\Bbb R}$ и над полем ${\Bbb C}$,
+а также невырожденное линейное преобразование переменных,
+приводящее к этому виду, для квадратичных форм $F_1$ и $F_2$.
+\startformula F_1 = 17x_1^2 + 17x_2^2 + 11x_3^2 − 16x_1 x_2 + 8x_1 x_3 − 8x_2 x_3 \stopformula
+\startformula F_2 = 8x_1^2 − 7x_2^2 + 8x_3^2 + 8x_1 x_2 − 2x_1 x_3 + 8x_2 x_3 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №7}
+Вычислите положительный и отрицательный индексы инерции квадратичных форм $G_1$, $G_2$.
+Являются ли эти формы положительно определенными (отрицательно определенными)?
+\startformula G_1 = x_1^2 − 2x_2^2 + x_3^2 + 2x_1 x_2 + 4x_1 x_3 + 2x_2 x_3 \stopformula
+\startformula G_2 = 2x_1 x_3 − 4x_2 x_3 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\subject {Задание №8}
+При каких значениях $λ$ квадратичная форма $F$ является положительно (отрицательно) определенной?
+\startformula F = 2x_1^2 + x_2^2 + 3x_3^2 + 2λx_1 x_2 + 2x_1 x_3 \stopformula
+\subsubject {Решение}
+TODO
+
+
+\stoptext
