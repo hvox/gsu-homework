@@ -65,8 +65,47 @@ M_{F_2} = \pmat{
 \startformula G_1 = x_1^2 − 2x_2^2 + x_3^2 + 2x_1 x_2 + 4x_1 x_3 + 2x_2 x_3 \stopformula
 \startformula G_2 = 2x_1 x_3 − 4x_2 x_3 \stopformula
 \subsubject {Решение}
-TODO
-
+Приведём квадратичную форму $G_1$ к каноническому виду.
+\startformula \startalign
+\NC G_1 \NC = x_1^2 − 2x_2^2 + x_3^2 + 2x_1 x_2 + 4x_1 x_3 + 2x_2 x_3 \NR
+\NC\NC = (x_1 + x_2 + 2x_3)^2 - 3x_2^2 - 2x_2x_3 - 3x_3^2 \NR
+\NC\NC = y_1^2 - 3x_2^2 - 2x_2x_3 - 3x_3^2 \NR
+\NC\NC = y_1^2 - 3\left(x_2 + \frac13x_3\right)^2 - \frac83x_3^2 \NR
+\NC\NC = y_1^2 - 3y_2^2 - \frac83y_3^2 \NR
+\stopalign \stopformula
+Этим заменам переменных соответствует линейное преобразование:
+\startformula \startcases
+y_1 = x_1 + x_2 + 2x_3 \NR
+y_2 = x_2 + \frac13x_3 \NR
+y_3 = x_3 \NR
+\stopcases \stopformula
+Этому линейному преобразованию соответствую следующая матрица:
+\startformula \pmat{1,1,2; 0,1,\frac13; 0,0,3} \stopformula
+Приведём квадратичную форму $G_2$ к каноническому виду.
+\startformula \startalign
+\NC G_2 \NC = 2 x_1 x_3 - 4 x_2 x_3 \NR
+\NC\NC =  2 (z_1 - z_2) (z_1 + z_2) - 4 x_2 (z_1 + z_2) \NR
+\NC\NC = -4 x_2 z_1 + 2 z_1^2 - 4 x_2 z_2 - 2 z_2^2 \NR
+\NC\NC = 2(z_1 - x_2)^2 - 2x_2^2 - 4x_2z_2 - 2z_2^2 \NR
+\NC\NC = 2y_1^2 - 2x_2^2 - 4x_2z_2 - 2z_2^2 \NR
+\NC\NC = 2y_1^2 - 2(x_2 + z_2)^2 \NR
+\NC\NC = 2y_1^2 - 2y_2^2 \NR
+\NC\NC = 2y_1^2 - 2y_2^2 + 0y_3^2 \NR
+\stopalign \stopformula
+Использованным заменам переменных соответствует следующее линейное преобразование:
+\startformula \startcases
+y_1 = z_1 - x_2 = \frac{x_1}2 - x_2 + \frac{x_3}2 \NR
+y_2 = x_2 + z_2 = -\frac{x_1}2 + x_2 + \frac{x_3}2 \NR
+y_3 = x_1 \NR
+\stopcases \stopformula
+Этому линейному преобразованию соответствую следующая матрица:
+\startformula \pmat{\frac12,-1,\frac12; -\frac12,1,\frac12; 1,0,0} \stopformula
+Проверим, что найденные линейные преобразования являются невырожденными:
+\startformula
+\dmat{1,1,2; 0,1,\frac13; 0,0,3} = 3
+\qquad\qquad
+\dmat{\frac12,-1,\frac12; -\frac12,1,\frac12; 1,0,0} = -1
+\stopformula
 
 \subject {Задание №3}
 Определите индекс инерции квадратичных форм $F_1$, $G_1$, $F_2$, $G_2$.
@@ -75,7 +114,28 @@ TODO
 \startformula F_2(x_1, x_2, x_3, x_4) = x_1 x_2 + x_1 x_3 + x_1 x_4 + x_2 x_3 + x_2 x_4 \stopformula
 \startformula G_2 = 2x_1 x_3 − 4x_2 x_3 \stopformula
 \subsubject {Решение}
-TODO
+Для нахождения индексов инерции запишем матрицы данных квадратичных форм.
+\startformula
+M_{F_1} = \pmat{1,-1,0;-1,0,2;0,2,5}
+\qquad \qquad
+M_{G_1} = \pmat{1,1,2;1,-2,1;2,1,1}
+\stopformula
+\startformula
+M_{F_2} = \pmat{0,\frac12,\frac12,\frac12; \frac12,0,\frac12,\frac12; \frac12,\frac12,0,0; \frac12,\frac12,0,0}
+\qquad \qquad
+M_{G_2} = \pmat{0,0,1; 0,0,-2; 1,-2,0}
+\stopformula
+Найдём индексы инерции квадратичных форм как ранги полученных матриц.
+\startformula
+ \text{rang}\ \pmat{1,-1,0;-1,0,2;0,2,5} = 3
+\qquad \qquad
+ \text{rang}\ \pmat{1,1,2;1,-2,1;2,1,1} = 3
+\stopformula
+\startformula
+ \text{rang}\ \pmat{0,\frac12,\frac12,\frac12; \frac12,0,\frac12,\frac12; \frac12,\frac12,0,0; \frac12,\frac12,0,0} = 3
+\qquad \qquad
+ \text{rang}\ \pmat{0,0,1; 0,0,-2; 1,-2,0} = 2
+\stopformula
 
 
 \subject {Задание №4}
@@ -83,7 +143,42 @@ TODO
 где $A$ --- матрица квадратичной формы $F$. Сделайте проверку.
 \startformula F = 17x_1^2 + 17x_2^2 + 11x_3^2 − 16x_1 x_2 + 8x_1 x_3 − 8x_2 x_3 \stopformula
 \subsubject {Решение}
-TODO
+Запишем матрицу данной квадратичной формы.
+\startformula A = \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \stopformula
+Методом пристального взгляда я выяснил, что я уже выполнял это задание для этой матрицы в прошлой лабораторной работе.
+Используя специальную технику CTRL-C / CTRL-V я получаю матрицу $T$:
+\startformula
+T = \pmat{  \frac23, -\frac23, \frac13;
+	\frac{\sqrt5}{5}, 0, -\frac{2\sqrt5}{5};
+	\frac{4\sqrt5}{15}, \frac{\sqrt5}{3}, \frac{2\sqrt5}{15} }
+\stopformula
+Сделаем проверку, что $TAT^{-1}$ диагональна, а $T$ ортогональна.
+\startformula\startalign
+\NC TAT^{-1} \NC = 
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}
+\cdot \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \cdot
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}^{-1}
+\NR \NC \NC =
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}
+\cdot \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \cdot
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}^{T}
+\NR \NC \NC =
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}}
+\cdot \pmat{17, -8, 4; -8, 17, -4; 4, -4, 11} \cdot
+\pmat{   \frac23,  \frac{\sqrt5}{5},  \frac{4\sqrt5}{15};    
+	-\frac23,   0,                \frac{\sqrt5}{3};      
+	 \frac13, -\frac{2\sqrt5}{5}, \frac{2\sqrt5}{15} }
+\NR \NC \NC =
+\pmat{27,0,0;0,9,0;0,0,9}
+\stopalign\stopformula
+\startformula TCT^{-1} = \pmat{27,0,0;0,9,0;0,0,9} \text{ --- диагональная матрица} \stopformula
+Проверим, что $T$ является ортогональной матрицей:
+\startformula T\cdot T^{T} =
+\pmat{\frac23,-\frac23,\frac13;\frac{\sqrt5}{5},0,-\frac{2\sqrt5}{5};\frac{4\sqrt5}{15},\frac{\sqrt5}{3},\frac{2\sqrt5}{15}} \cdot
+\pmat{\frac23,\frac{\sqrt5}{5},\frac{4\sqrt5}{15};-\frac23,0,\frac{\sqrt5}{3};\frac13,-\frac{2\sqrt5}{5},\frac{2\sqrt5}{15}}
+= \pmat{1,0,0;0,1,0;0,0,1} = E
+\stopformula
+
 
 
 \subject {Задание №5}
@@ -91,7 +186,37 @@ TODO
 приводящее квадратичную форму $F(x_1, x_2, x_3)$ к каноническому виду.
 \startformula F = 8x_1^2 − 7x_2^2 + 8x_3^2 + 8x_1 x_2 − 2x_1 x_3 + 8x_2 x_3 \stopformula
 \subsubject {Решение}
-TODO
+Запишем матрицу данной квадратичной формы.
+\startformula A = \pmat{8,  4, -1; 4, -7,  4; -1,  4,  8} \stopformula
+Данная матрица обладает собственными значениями $-9$, $9$, $9$ и собственными векторами
+$(1, -4, 1)$, $(1, 0, -1)$, $(0, 1, 4)$ соответственно.
+После нормализации и ортгонализации этих векторов получаем ортонормированный базис:
+\startformula
+\left(\frac16 \sqrt2,\ -\frac23\sqrt2,\ \frac16\sqrt2\right)
+\qquad
+\left(\frac12 \sqrt2,\ 0,\ -\frac12\sqrt2\right)
+\qquad
+\left(0,\ \frac1{17}\sqrt{17},\ \frac4{17}\sqrt{17}\right)
+\stopformula
+Теоретически, в этом базисе квадратичная форма $F$ будет иметь канонический вид с собственными значениями в качестве коэфициентов.
+Составим матрицу перехода к этому базису.
+\startformula
+T = \pmat{
+	\frac16 \sqrt2,-\frac23\sqrt2,\frac16\sqrt2;
+	\frac1{\sqrt{2}},0,-\frac1{\sqrt2};
+	0,\frac1{\sqrt{17}},\frac4{\sqrt{17}}}
+\stopformula
+Сделаем проверку, что $TAT^{-1}$ диагональна, а $T$ ортогональна.
+\startformula \startalign
+\NC TAT^{-1} \NC =
+	\pmat{ \frac16 \sqrt2,-\frac23\sqrt2,\frac16\sqrt2; \frac1{\sqrt{2}},0,-\frac1{\sqrt2}; 0,\frac1{\sqrt{17}},\frac4{\sqrt{17}}}
+	\cdot
+	\pmat{8,  4, -1; 4, -7,  4; -1,  4,  8}
+	\cdot
+	\pmat{ \frac16\sqrt2, \frac12\sqrt2, \frac23; -\frac23\sqrt2, 0, \frac13; \frac16\sqrt2, - \frac12\sqrt2, \frac23 }
+\NR \NC \NC = \pmat{-9,0,0; 0,9,0; 0,0,9} \NR
+\stopalign \stopformula
+
 
 
 \subject {Задание №6}
@@ -101,7 +226,63 @@ TODO
 \startformula F_1 = 17x_1^2 + 17x_2^2 + 11x_3^2 − 16x_1 x_2 + 8x_1 x_3 − 8x_2 x_3 \stopformula
 \startformula F_2 = 8x_1^2 − 7x_2^2 + 8x_3^2 + 8x_1 x_2 − 2x_1 x_3 + 8x_2 x_3 \stopformula
 \subsubject {Решение}
-TODO
+Найдите нормальный вид $F_1$ над полем ${\Bbb R}$.
+Вспомним, что $F_1$ линейным преобразованием $T$ приводится к канонической форме $27y_1 + 9y_2 + 9y_3$.
+\startformula
+T = \pmat{
+	\frac23, -\frac23, \frac13;
+	\frac{\sqrt5}{5}, 0, -\frac{2\sqrt5}{5};
+	\frac{4\sqrt5}{15}, \frac{\sqrt5}{3}, \frac{2\sqrt5}{15} }
+\stopformula
+Полсе этого заменой $z_1 = 3\sqrt{3}y_1$, $z_2=3y_2$, $z_3=3y_3$ получаем нормальный вид квадратичной формы $F_1$:
+\startformula F_1 = z_1^2 + z_2^2 + z_3^2 \stopformula
+Найдём линейное преобразование переменных, соответствующее переходу от переменных $x_1$, $x_2$, $x_3$ к переменным $z_1$, $z_2$, $z_3$:
+\startformula \startalign
+\NC T' \NC = \pmat{3\sqrt3,0,0; 0,3,0; 0,0,3} \cdot T \NR
+\NC \NC =
+	\pmat{\frac1{3\sqrt3},0,0; 0,\frac13,0; 0,0,\frac13} \cdot
+	\pmat{ \frac23, -\frac23, \frac13; \frac{\sqrt5}{5}, 0, -\frac{2\sqrt5}{5}; \frac{4\sqrt5}{15}, \frac{\sqrt5}{3}, \frac{2\sqrt5}{15} }
+\NR\NC\NC = \pmat{
+	\frac{2\sqrt3}{27}, -\frac{2\sqrt3}{27}, \frac1{27}\sqrt3;
+	\frac{\sqrt5}{15}, 0, -\frac{2\sqrt5}{15};
+	\frac{4\sqrt5}{45}, \frac{\sqrt5}9, \frac{2\sqrt5}{45}} \NR
+\stopalign \stopformula
+Поскольку все коэфициенты в этом нормальном виде равны единицам,
+то $F_1$ обладает данной нормальной формой и над полем ${\Bbb R}$ и над ${\Bbb C}$.
+\par Найдите нормальный вид $F_2$ над полем ${\Bbb R}$.
+Вспомним, что $F_1$ линейным преобразованием $T$ приводится к канонической форме $-9y_1 + 9y_2 + 9y_3$.
+\startformula T = \pmat{
+	\frac16 \sqrt2,-\frac23\sqrt2,\frac16\sqrt2;
+	\frac1{\sqrt{2}},0,-\frac1{\sqrt2};
+	0,\frac1{\sqrt{17}},\frac4{\sqrt{17}}}
+\stopformula
+Полсе этого заменой $z_1 = 3y_1$, $z_2=3y_2$, $z_3=3y_3$ получаем нормальный вид квадратичной формы $F_2$:
+\startformula F_2 = -z_1^2 + z_2^2 + z_3^2 \stopformula
+Найдём линейное преобразование переменных, соответствующее переходу от переменных $x_1$, $x_2$, $x_3$ к переменным $z_1$, $z_2$, $z_3$:
+\startformula \startalign
+\NC T' \NC = \pmat{\frac13,0,0; 0,\frac13,0; 0,0,\frac13} \cdot T \NR
+\NC \NC =
+	\pmat{\frac13,0,0; 0,\frac13,0; 0,0,\frac13} \cdot
+	\pmat{ \frac16 \sqrt2,-\frac23\sqrt2,\frac16\sqrt2; \frac1{\sqrt{2}},0,-\frac1{\sqrt2}; 0,\frac1{\sqrt{17}},\frac4{\sqrt{17}}}
+\NR\NC\NC = \pmat{
+	\frac{\sqrt2}{18}, -\frac{2\sqrt2}9, \frac{\sqrt2}{18};
+	\frac{\sqrt2}6, 0, -\frac{\sqrt2}6;
+	\frac29, \frac19, \frac29 } \NR
+\stopalign \stopformula
+Таким образом квадратичная форма $F_2$ обладает нормальным видом $-z_1^2 + z_2^2 + z_3^2$ над полем ${\Bbb R}$.
+При помощи замены переменной $w = iz_1$ получаем нормальным вид $w^2 + z_2^2 + z_3^2$ над полем ${\Bbb C}$.
+Найдём линейное преобразование переменных, соответствующее переходу от переменных $x_1$, $x_2$, $x_3$ к переменным $w$, $z_2$, $z_3$:
+\startformula \startalign
+\NC T'' \NC = \pmat{i,0,0; 0,1,0; 0,0,1} \cdot T' \NR
+\NC \NC =
+	\pmat{i,0,0; 0,1,0; 0,0,1} \cdot
+	\pmat{\frac{\sqrt2}{18}, -\frac{2\sqrt2}9, \frac{\sqrt2}{18}; \frac{\sqrt2}6, 0, -\frac{\sqrt2}6; \frac29, \frac19, \frac29 }
+\NR\NC\NC = \pmat{
+	\frac{\sqrt2}{18}i, -\frac{2\sqrt2}9i, \frac{\sqrt2}{18}i;
+	\frac{\sqrt2}6, 0, -\frac{\sqrt2}6;
+	\frac29, \frac19, \frac29 } \NR
+\stopalign \stopformula
+
 
 
 \subject {Задание №7}
@@ -110,14 +291,44 @@ TODO
 \startformula G_1 = x_1^2 − 2x_2^2 + x_3^2 + 2x_1 x_2 + 4x_1 x_3 + 2x_2 x_3 \stopformula
 \startformula G_2 = 2x_1 x_3 − 4x_2 x_3 \stopformula
 \subsubject {Решение}
-TODO
+Для нахождения положительных и отрицательных индексов инерции данных квадратичных форм,
+найдём собственные значения матриц им соответствующих.
+Ведь собственные значения являются коэфициентами в некотором каноническом виде этих квадратичных форм.
+\startformula M_{G_1} = \pmat{1,1,2;1,-2,1;2,1,1} \qquad \qquad M_{G_2} = \pmat{0,0,1; 0,0,-2; 1,-2,0} \stopformula
+При помощи калькулятора я выяснил, что собственными значениями матрицы $M_{G_1}$ являются $-1$, $-2.3722813...$, $3.37228...$,
+т.е. положительный индекс инерции квадратичной формы $G_1$ равен $1$, а отрицательный --- $2$.
+Собственными значениями матрицы $M_{G_2}$ являются $0$, $-2.23606...$, $2.23606...$,
+т.е. положительный и отрицательный индексы инерции квадратичной формы $G_2$ равены $1$ и $1$.
 
 
 \subject {Задание №8}
 При каких значениях $λ$ квадратичная форма $F$ является положительно (отрицательно) определенной?
 \startformula F = 2x_1^2 + x_2^2 + 3x_3^2 + 2λx_1 x_2 + 2x_1 x_3 \stopformula
 \subsubject {Решение}
-TODO
+Составим матрицу данной квадратичной формы:
+\startformula \pmat{2,λ,1; λ,1,0; 1,0,3} \stopformula
+Данная матрица обладает тремя главными минорами:
+\startformula 
+\Delta_1 = λ
+\qquad
+\Delta_2 = \dmat{2,λ; λ,1} = 2 - λ^2
+\qquad
+\Delta_3 = \dmat{2,λ,1; λ,1,0; 1,0,3} = -3λ^2 + 5
+\stopformula
+Найдём такие значения $λ$, при которых квадратичная форма $F$ является положительно определенной.
+\startformula
+\Delta_1 = λ > 0 \qquad
+\Delta_2 = 2 - λ^2 > 0 \Rightarrow |λ| < \sqrt2 \qquad
+\Delta_3 = -3λ^2 + 5 > 0 \Rightarrow |λ| < \sqrt{\frac53}
+\stopformula
+Таким образом, квадратичная форма $F$ является положительно определенной при $0 < λ < \sqrt{\frac53}$
+\par Найдём такие значения $λ$, при которых квадратичная форма $F$ является отрицательно определенной.
+\startformula
+\Delta_1 = λ < 0 \qquad
+\Delta_2 = 2 - λ^2 > 0 \Rightarrow |λ| < \sqrt2 \qquad
+\Delta_3 = -3λ^2 + 5 < 0 \Rightarrow |λ| > \sqrt{\frac53}
+\stopformula
+Таким образом, квадратичная форма $F$ является отрицательно определенной при $\sqrt{\frac53} < λ < \sqrt2$
 
 
 \stoptext
