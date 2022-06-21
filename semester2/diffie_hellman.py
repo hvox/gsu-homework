@@ -73,28 +73,32 @@ def decrypt_message(secret: int, encrypted: str):
 def main():
     print(
         "The system will prompt you to enter the system parameters."
-        + "Please don't resist."
-    )
-    print(
-        "If you don't want to enter the parameters,"
+        + "Please don't resist.\n"
+        + "If you don't want to enter the parameters, "
         + "you can leave some fields empty."
     )
     config = Configuration(*map(str2int, (input("p = "), input("g = "))))
     if not config.p or not config.g:
         config = random_configuration()
-        print(f"p = {config.p}")
-        print(f"g = {config.g}")
-    private_key = str2int(input("private_key = "))
+        print(f"\np = {config.p}\ng = {config.g}")
+        input(
+            "Press enter when you share your p and g values to your partner..."
+        )
+    private_key = str2int(input("\nprivate_key = "))
     if not private_key:
         private_key = random_private_key(config)
         print(f"private_key = {private_key}")
     public_key = generate_public_key(config, private_key)
-    print(f"public_key = {public_key}")
-    contact_key = str2int(input("Public key of your conversation partner: "))
-    secret = generate_secret(config, private_key, contact_key)
-    print(f"secret = {secret}")
     print(
-        "You have completed the configuration step.\n"
+        f"\npublic_key = {public_key}\n\n"
+        + "Please, give your public key to your conversation partner.\n"
+        + "Also ask your partner to give their public key to you\n"
+    )
+    contact_key = str2int(input("Public key of your conversation partner = "))
+    secret = generate_secret(config, private_key, contact_key)
+    # print(f"secret = {secret}")
+    print(
+        "\nYou have completed the configuration step.\n"
         + "Now you can encrypt or decrypt messages\n"
         + "Available commands:\n"
         + "\te [message] -- encrypt message\n"
@@ -106,7 +110,12 @@ def main():
             case "e" | "E", msg:
                 print(encrypt_message(secret, msg))
             case "d" | "D", msg:
-                print(decrypt_message(secret, msg))
+                try:
+                    print(decrypt_message(secret, msg))
+                except UnicodeDecodeError:
+                    print(
+                        "Something is wrong: the decrypted message is corrupted."
+                    )
             case unrecognized_command:
                 if isinstance(unrecognized_command, list):
                     unrecognized_command = " ".join(unrecognized_command)
