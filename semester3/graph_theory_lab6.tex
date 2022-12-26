@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+\usepackage[russian]{babel}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.9}
+
+
+
+\begin{document}
+
+\clearpage
+\centerline { Гомельский государственный университет имени Франциска Скорины }
+\centerline { факультет математики и технологий программирования }
+\vfill \vfill
+\centerline { Лабораторная работа №2 }
+\vfill \vfill
+{ \noindent Выполнил:\\Хамков Владислав (ПИ-21)\\
+  Проверил:\\Монахов Виктор Степанович}
+\vfill
+\centerline { Осень 2022 }
+\thispagestyle{empty}
+\pagebreak
+
+\section*{Задание №1}
+\begin{tikzpicture}[node distance={24mm}, thick, main/.style = {draw, circle}] 
+	\node[main] (1) {\ };
+	\node[main] (2) [right of=1] {\ }; \draw (1) -- (2);
+	\node[main] (3) [right of=2] {\ }; \draw (2) -- (3);
+	\node[main] (4) [right of=3] {\ }; \draw (3) -- (4);
+	\node[main] (5) [below of=1] {\ };
+	\node[main] (6) [right of=5] {\ }; \draw (5) -- (6);
+	\node[main] (7) [right of=6] {\ }; \draw (6) -- (7);
+	\node[main] (8) [right of=7] {\ }; \draw (7) -- (8);
+	\draw (1) -- (5); \draw (2) -- (6); \draw (3) -- (7); \draw (1) -- (6);
+	\draw (2) -- (7); \draw (2) -- (5); \draw (3) -- (6);
+\end{tikzpicture} \qquad
+\begin{tikzpicture}[node distance={24mm}, thick, main/.style = {draw, circle}] 
+	\node[main] (1) {$1$};
+	\node[main] (2) [right of=1] {$2$}; \draw (1) -- (2);
+	\node[main] (3) [right of=2] {$1$}; \draw (2) -- (3);
+	\node[main] (4) [right of=3] {$2$}; \draw (3) -- (4);
+	\node[main] (5) [below of=1] {$3$};
+	\node[main] (6) [right of=5] {$4$}; \draw (5) -- (6);
+	\node[main] (7) [right of=6] {$3$}; \draw (6) -- (7);
+	\node[main] (8) [right of=7] {$4$}; \draw (7) -- (8);
+	\draw (1) -- (5); \draw (2) -- (6); \draw (3) -- (7); \draw (1) -- (6);
+	\draw (2) -- (7); \draw (2) -- (5); \draw (3) -- (6);
+\end{tikzpicture} 
+
+Для графа нужно найдити наименьшее такое $k$, для которого граф является
+$k$-дольным и построить соответствующее разбиение графа на доли.
+
+Из рисунка нетрудно заметить, что мой граф содержит полный подграф из четырёх
+вершин, поэтому $k\ge4$. А из разбиения графа на четыре доли следует, что
+$k\le4$. Таким образом, мой граф является четырёхдольным.
+
+\section*{Задание №2}
+В этом задании я должен изобразить граф $G$, заданный матрицей смежности $A(G)$.
+И ещё я должен был найти радиус, диаметр, центр графа, заданного той же матрицей смежности $A(G)$.
+\[
+A(G) = \begin{bmatrix}
+	0 & 0 & 1 & 0 & 0\\
+	0 & 0 & 1 & 1 & 0\\
+	1 & 1 & 0 & 1 & 0\\
+	0 & 1 & 1 & 0 & 0\\
+	0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+\\ Вот граф, соответствующий матрице смежности $A(G)$: \\
+\begin{center}
+\begin{tikzpicture}[node distance={3cm}, thick, main/.style = {draw, circle}] 
+	\node[main] (1) {$1$};
+	\node[main] (2) [right of=1] {$2$};
+	\node[main] (3) [below of=2] {$3$};
+	\node[main] (4) [left of=3] {$4$};
+	\node[main] (5) [right of=2] {$5$};
+	\draw (1) -- (3); \draw (2) -- (3); \draw (2) -- (4); \draw (3) -- (4);
+\end{tikzpicture}
+\end{center}
+Из рисунка нетрудно заметить, что граф не является связным. Следовательно, понятия радиуса, диаметра и центра к нему неприменимы.
+
+
+\section*{Задание №3}
+В этом задании я должен изобразить граф G, заданный матрицей инцидентности $B(G)$
+и найти радиус, диаметр и центр этого графа.
+\[
+B(G) = \begin{bmatrix}
+	1 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\
+	0 & 1 & 1 & 0 & 0 & 0 & 1 & 0\\
+	1 & 0 & 0 & 0 & 0 & 0 & 1 & 1\\
+	0 & 1 & 0 & 0 & 1 & 0 & 0 & 0\\
+	0 & 0 & 0 & 1 & 0 & 1 & 0 & 1
+\end{bmatrix}
+\]
+\\ Вот граф, соответствующий матрице инцидентности $B(G)$: \\
+\begin{center}
+\begin{tikzpicture}[node distance={3cm}, thick, main/.style = {draw, circle}] 
+	\node[main] (1) {$1$};
+	\node[main] (2) [right of=1] {$2$};
+	\node[main] (3) [below of=2] {$3$};
+	\node[main] (4) [left of=3] {$4$};
+	\node[main] (5) [above right of=2] {$5$};
+	\draw (1) -- (3);
+	\draw (2) -- (4);
+	\draw (1) -- (2);
+	\draw (1) -- (5);
+	\draw (1) -- (4);
+	\draw (2) -- (3);
+	\draw (3) -- (5);
+	\draw (1) to [out=135,in=90,looseness=1.5] (5);
+\end{tikzpicture}
+\end{center}
+\[
+	\epsilon(1) = 1 \quad \epsilon(2) = 2 \quad \epsilon(3) = 2 \quad
+	\epsilon(4) = 2 \quad \epsilon(5) = 2 \quad R = 1 \quad D = 2 \quad
+	C = \{1\}
+\]
+
+
+\section*{Задание №4}
+В этом задании я должен изобразить граф G, заданный матрицей Кирхгофа $K(G)$
+и найти радиус, диаметр и центр этого графа.
+\[
+K(G) = \begin{bmatrix}
+	2 & -1 & 0 & 0 & -1 \\
+	-1 & 2 & 0 & 0 & -1 \\
+	0 & 0 & 1 & -1 & 0 \\
+	0 & 0 & -1 & 2 & -1 \\
+	-1 & -1 & 0 & -1 & 3
+\end{bmatrix}
+\]
+\\ Вот граф, соответствующий матрице Кирхгофа $K(G)$: \\
+\begin{center}
+\begin{tikzpicture}[node distance={3cm}, thick, main/.style = {draw, circle}] 
+	\node[main] (1) {$1$};
+	\node[main] (2) [right of=1] {$2$};
+	\node[main] (3) [right of=2] {$3$};
+	\node[main] (4) [below of=2] {$4$};
+	\node[main] (5) [below of=1] {$5$};
+	\draw (1) -- (2); \draw (2) -- (5); \draw (1) -- (5);
+	\draw (4) -- (5); \draw (4) -- (3);
+\end{tikzpicture}
+\end{center}
+\[
+	\epsilon(1) = 3 \quad \epsilon(2) = 3 \quad \epsilon(3) = 3 \quad
+	\epsilon(4) = 2 \quad \epsilon(5) = 2 \quad R = 2 \quad D = 3 \quad
+	C = \{4, 5\}
+\]
+
+\label{LastPage}
+\end{document}
